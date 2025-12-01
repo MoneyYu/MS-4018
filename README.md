@@ -50,7 +50,7 @@ Turtoial Video: https://media.yu.money/common/lods.html
 
 [Enterprise data protection in Microsoft 365 Copilot and Microsoft 365 Copilot Chat](https://learn.microsoft.com/en-us/copilot/microsoft-365/enterprise-data-protection)
 
-[Video: The Copilot System: Explained by Microsoft](https://www.youtube.com/watch?v=E5g20qmeKpg)
+[Video: The Copilot System: Explained by Microsoft](https://youtu.be/E5g20qmeKpg)
 
 [Enterprise data protection in Microsoft 365 Copilot and Microsoft 365 Copilot Chat](https://learn.microsoft.com/en-us/copilot/microsoft-365/enterprise-data-protection)
 
@@ -249,40 +249,36 @@ Turtoial Video: https://media.yu.money/common/lods.html
 [Frequently asked questions](https://learn.microsoft.com/en-us/topic/frequently-asked-questions-about-microsoft-365-copilot-pages-aaffb2d7-cbd7-4b57-a69a-69a29bd03685)
 
 ## Videos
-|   No.   | Name                                                              | Link                         |
-|:-------:|:----------------------------------------------------------------- | ---------------------------- |
-| 01-0-00 | Introducing Microsoft 365 Copilot - Your Copilot for Work         | https://youtu.be/S7xTBa93TX8 |
-| 01-0-01 | Copilot for Microsoft 365 - Work On                               | https://youtu.be/0QEL9Y3Udvc |
-| 01-0-02 | Microsoft 365 Copilot in Word                                     | https://youtu.be/C8WDGKaOt2s |
-| 01-0-03 | Microsoft 365 Copilot in PowerPoint                               | https://youtu.be/fzoZ_f7ji5Q |
-| 01-0-04 | Microsoft 365 Copilot in Excel                                    | https://youtu.be/I-waFp6rLc0 |
-| 01-0-05 | Microsoft 365 Hour: Copilot for Outlook                           | https://youtu.be/IaPPfklqQDo |
-| 01-0-06 | Microsoft 365 Copilot in Teams                                    | https://youtu.be/nfRC_spQoSU |
-| 01-0-07 | Microsoft 365 Copilot in Teams Meetings                           | https://youtu.be/N1gpkk-MwpY |
-| 01-0-08 | Introducing Team Copilot - Microsoft 365                          | https://youtu.be/4k2T5sfGIP4 |
-| 01-0-09 | Copilot in Forms - Create engaging forms                          | https://youtu.be/LC58G_0SFmA |
-| 01-0-10 | Copilot in Stream - Insights for any video                        | https://youtu.be/fD1On2K1DQM |
-| 01-0-11 | Copilot in Whiteboard - Brainstorming                             | https://youtu.be/Gz9vKcuHKGk |
-| 01-0-12 | Transform sales effectiveness with Microsoft Copilot for Sales    | https://youtu.be/sNTV33EXpb8 |
-| ------- | ----------------------------------------------------------------- | ---------------------------- |
-| 01-2-01 | How Microsoft Copilot for Microsoft 365 works                     | https://youtu.be/XJsf0Tpz0ho |
-| 01-2-02 | The Copilot System: Explained by Microsoft                        | https://youtu.be/E5g20qmeKpg |
-| 01-2-03 | How Microsoft Copilot for M365 uses Azure Open AI Services        | https://youtu.be/SrU3GcsBkhw |
-| 01-2-04 | Data security in Microsoft Copilot for Microsoft 365              | https://youtu.be/6_ivkSyo0xY |
-| 01-2-05 | Microsoft Copilot for M365: Built on a foundation of trust        | https://youtu.be/gFjD5KCY6io |
-| ------- | ----------------------------------------------------------------- | ---------------------------- |
-| 01-3-01 | Plugins for Microsoft 365 Copilot                                 | https://youtu.be/kMXtwtdryKY |
-| 01-3-02 | Multi-turn demo using Atlassian plugins for Microsoft 365 Copilot | https://youtu.be/r-N54J7128Q |
-| 01-3-03 | Create custom copilots from SharePoint in just a few clicks       | https://youtu.be/vuO_NFP9Zxc |
-| 01-3-04 | Copilot Studios - Explained by Microsoft                          | https://youtu.be/06D4G2K9UFs |
-| 01-3-05 | Microsoft Graph Explained                                         | https://youtu.be/3Xz6fWuU8ZY |
-| ------- | ----------------------------------------------------------------- | ---------------------------- |
-| 02-1-01 | Write Better Prompts with Copilot                                 | https://youtu.be/zOSPcmnS2VU |
-
-
-<!--
-|         | M365 Copilot with Outlook, PowerPoint, Excel, and OneNote         | https://youtu.be/ebls5x-gb0s |
--->
+|   No.   | Name                                                               | Link                         |
+| :-----: | :----------------------------------------------------------------- | ---------------------------- |
+| 01-0-00 | Introducing Microsoft 365 Copilot - Your Copilot for Work          | https://youtu.be/S7xTBa93TX8 |
+| 01-0-01 | Copilot for Microsoft 365 - Work On                                | https://youtu.be/0QEL9Y3Udvc |
+| 01-0-02 | Microsoft 365 Copilot in Word                                      | https://youtu.be/C8WDGKaOt2s |
+|         | Agent Mode in Word: Edit and Format a Word Document with Copilot   | https://youtu.be/8oJwUiLn6IM |
+| 01-0-03 | Microsoft 365 Copilot in PowerPoint                                | https://youtu.be/fzoZ_f7ji5Q |
+| 01-0-04 | Microsoft 365 Copilot in Excel                                     | https://youtu.be/I-waFp6rLc0 |
+|         | Agent Mode in Excel: Build and Edit Spreadsheets with Copilot      | https://youtu.be/nSqCy-7Qabk |
+| 01-0-05 | Microsoft 365 Hour: Copilot for Outlook                            | https://youtu.be/IaPPfklqQDo |
+|         | How to Use Copilot in Outlook: Write and Summarize Emails Using AI | https://youtu.be/FLd9djxseVI |
+|         | Microsoft 365 Copilot in Outlook - Prioritize my inbox             | https://youtu.be/9fEgd6WDP2w |
+| 01-0-06 | Microsoft 365 Copilot in Teams                                     | https://youtu.be/nfRC_spQoSU |
+| 01-0-07 | Microsoft 365 Copilot in Teams Meetings                            | https://youtu.be/N1gpkk-MwpY |
+| 01-0-08 | Introducing Team Copilot - Microsoft 365                           | https://youtu.be/4k2T5sfGIP4 |
+|         | Facilitator in Teams meetings                                      | https://youtu.be/PMoGOWOBicY |
+| ------- | -----------------------------------------------------------------  | ---------------------------- |
+| 01-2-01 | How Microsoft Copilot for Microsoft 365 works                      | https://youtu.be/XJsf0Tpz0ho |
+| 01-2-02 | The Copilot System: Explained by Microsoft                         | https://youtu.be/E5g20qmeKpg |
+| 01-2-03 | How Microsoft Copilot for M365 uses Azure Open AI Services         | https://youtu.be/SrU3GcsBkhw |
+| 01-2-04 | Data security in Microsoft Copilot for Microsoft 365               | https://youtu.be/6_ivkSyo0xY |
+| 01-2-05 | Microsoft Copilot for M365: Built on a foundation of trust         | https://youtu.be/gFjD5KCY6io |
+| ------- | -----------------------------------------------------------------  | ---------------------------- |
+| 01-3-01 | Plugins for Microsoft 365 Copilot                                  | https://youtu.be/kMXtwtdryKY |
+| 01-3-02 | Multi-turn demo using Atlassian plugins for Microsoft 365 Copilot  | https://youtu.be/r-N54J7128Q |
+| 01-3-03 | Create custom copilots from SharePoint in just a few clicks        | https://youtu.be/vuO_NFP9Zxc |
+| 01-3-04 | Copilot Studios - Explained by Microsoft                           | https://youtu.be/06D4G2K9UFs |
+| 01-3-05 | Microsoft Graph Explained                                          | https://youtu.be/3Xz6fWuU8ZY |
+| ------- | -----------------------------------------------------------------  | ---------------------------- |
+| 02-1-01 | Write Better Prompts with Copilot                                  | https://youtu.be/zOSPcmnS2VU |
 
 ### Customer Stories
 | No. | Name                                                         | Link                         |
