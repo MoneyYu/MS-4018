@@ -177,32 +177,40 @@ Milestone | Owner | Due date | Success criteria | Risk | Mitigation
 - ✅ 優點：快速做「稽核問答準備」。
 - ⚠️ 缺點：不能取代正式法遵/稽核定義，只能協助整理與建議。
 
-## 2.6 Word Agent Mode（你指定要加的重點｜3–5 分）
+---
 
-> **目標**：把「合規檢核 / 高層摘要 / 里程碑表」這類固定產出，用 Agent 固化成可重複流程（同樣格式、同樣輸出規範）。
+## 2.6 ✅ Word 內建 Agent Mode（Tools > Agent mode）（4–6 分）
 
-### 2.6.1 A 路（理想）：Word 內可直接選 Agent（若 Word UI 看得到）
-1) Word → Copilot 面板。
-2) 若有 **Agent/使用代理** 下拉，選擇你建立的 **MegaCompliance Agent**。
-3) 對同一份提案文件下指令輸出固定格式。
+> **重點澄清**：這裡的 Agent Mode 是 Word 裡 Copilot 的一個模式（在 Copilot 的 Tools 選單切換），不是你在 Copilot Chat 另外建立的自訂 Agent。
 
-**提示（W-AGENT-CHECKLIST，可直接貼）**
+### 2.6.1 如何進入 Word Agent Mode（現場照做）
+1) Word 開啟 Copilot。
+2) 在 Copilot 輸入框找到 **Tools** → 選 **Agent mode**。
+3) 之後你下的指令會讓 Copilot **直接在文件中執行多步驟編修、格式化**。
+
+### 2.6.2 Agent Mode 示範 Prompt（W-AGENT-1：清理格式 + 追加結論）
 ```text
-請以「法遵/稽核審閱」角度，輸出：
-1) 合規風險 Top 6（每項：風險｜依據章節｜補強建議）
-2) 產出一個表格：Control | Evidence Needed | Owner | Due date
-語氣：正式、可直接貼入文件。
-限制：若文件未提供依據，請明確指出缺口。
+請把這份提案文件做「高層可讀化」整理：
+- 章節標題統一為標題大小寫/一致格式
+- 將每章第一段改寫成更精煉的主旨句
+- 把「推動里程碑」段落改成表格（Milestone/Owner/Due/Success criteria）
+- 在文末新增「結論與需要高層決策的 3 件事」
+如果需要引用文件或郵件作為來源，請用 / 讓我選擇。
 ```
 
-### 2.6.2 B 路（備援、最穩）：Copilot Chat Agent → 產出 → 貼回 Word
-1) Copilot Chat（工作模式）→ 選 MegaCompliance Agent。
-2) 引用/上傳該 Word 文件 → 貼 `W-AGENT-CHECKLIST`。
-3) 複製貼回 Word，再用 Word Copilot 精簡/格式化（若需要）。
+### 2.6.3 Agent Mode 示範 Prompt（W-AGENT-2：依來源更新表格數字）
+> 官方示例提到可用 `/` 引用郵件/文件並更新表格。
+```text
+請更新本文件中的 KPI 表格：
+- 使用 / 選擇「上月週報」或「最新資料」作為來源
+- 更新數字後，補上一段「本月 vs 上月」的重點差異（<=6 點）
+- 最後列出 5 個可能被高層追問的問題與建議回答方向
+```
 
-**優點**：輸出規格一致、可治理。
-
-**缺點**：Agent 指令與知識來源需要維護（版本控管）。
+### 2.6.4 為何 / 優缺點 / 注意事項
+- **為何**：Agent Mode 的設計就是讓你用對話式方式驅動 **多步驟** 的文件編修與格式化，寫作更像對話協作。citeturn7search57turn7search63
+- ✅ 優點：同一個指令完成「改寫 + 結構 + 格式」的多步驟工作。citeturn7search63
+- ⚠️ 注意：Agent Mode 會**直接修改當前文件**，需要時用 Undo 或版本回復。
 
 ---
 
@@ -307,6 +315,43 @@ Milestone | Owner | Due date | Success criteria | Risk | Mitigation
 **優點**：把文字雜訊變成可用洞察。
 
 **缺點**：文本品質（語言一致性、描述規範）會影響結果。
+
+---
+
+## 3.7 ✅ Excel 內建 Agent Mode（Tools > Agent mode）（4–6 分）
+
+> **重點澄清**：這裡的 Agent Mode 是 Excel Copilot 裡的模式（Tools > Agent Mode），會用 Excel 內建工具（表格、圖表、Pivot、公式）直接改你的活頁簿；不是 Copilot Chat 自訂 Agent。citeturn7search75turn7search63
+
+### 3.7.1 如何進入 Excel Agent Mode（現場照做）
+1) 建議使用 **Excel for the web**（官方指引也以 web 版示範），建立或開啟活頁簿。citeturn7search75turn7search63
+2) Home → Copilot → 打開 Copilot chat。
+3) 在 Copilot 面板選單中選 **Tools** → **Agent Mode**。citeturn7search75turn7search63
+
+### 3.7.2 Agent Mode 示範 Prompt（X-AGENT-1：打造週報工作表 + 圖表）
+```text
+請針對這份爭議交易資料建立「風控週報」：
+- 新增一個新工作表 Weekly_Report
+- 產出 3 個 KPI（含計算方式與目標值）
+- 建立 1 個樞紐分析（Reason x Region，值=Count CaseID）
+- 建立 2 張圖表（你選最合適的），並加上標題
+- 在 Weekly_Report 最上方寫一段 120 字高層摘要
+請在完成後列出你做了哪些步驟與你檢查/驗證了什麼。
+```
+
+### 3.7.3 Agent Mode 示範 Prompt（X-AGENT-2：多步驟清理 + 合併）
+```text
+請把資料整理成一個可供月報使用的乾淨表：
+- 檢查是否有重複 CaseID、空白欄位或不一致的 Region 命名
+- 建立 Data_Quality 檢核工作表，列出你發現的問題與建議修正
+- 產出一個 Clean_Table（保留原欄位）
+完成後，請告訴我哪些修正需要我人工確認再套用。
+```
+
+### 3.7.4 為何 / 優缺點 / 注意事項
+- **為何**：Excel Agent Mode 特別適合「複雜、多步驟」的任務（例如重塑資料、合併工作表、建立多元素報表），而且你能在面板看到它的推理/步驟並隨時停止。citeturn7search75turn7search63
+- ✅ 優點：會用 Excel 的原生功能（表格、Pivot、圖表、公式）直接更新活頁簿，內容可持續編輯、與最新變更同步。citeturn7search75
+- ⚠️ 注意 1：Agent Mode 只作用於「目前開啟的活頁簿」，並會直接改檔，需要時用 Undo 或版本回復。citeturn7search75
+- ⚠️ 注意 2：若你只是單一步驟（插一張圖或一個 Pivot），可能用 Excel 的建議功能更快；Agent Mode 比較適合複雜任務。citeturn7search75
 
 ---
 
