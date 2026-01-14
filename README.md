@@ -8,8 +8,8 @@ GA: G-DXYJBX6BH8
 
 ## Course
 :::success
-Date: 20251201
-Course ID: 91730
+Date: 20260115
+Course ID: 92781
 :::
 
 :::info
@@ -27,7 +27,7 @@ Post Course Survey: [https://aka.ms/ms4018survey](https://aka.ms/ms4018survey)
 ## Lab
 ### Skillable lab system
 [ESI Labs](https://aka.ms/esilab)
-> Training key: 56A419D505864876
+> Training key: 247579E344E92E6D
 > > Only need to redeem once
 
 <!--
@@ -153,6 +153,20 @@ Turtoial Video: https://media.yu.money/common/lods.html
 [Multi-meeting audio recaps](/en-us/office/listen-to-audio-recaps-of-your-meetings-04bd2828-5c4e-4132-ac86-a87b9ec28984)
 
 ### Copilot in Outlook
+
+[Chat with Copilot in Outlook](https://support.microsoft.com/en-us/topic/chat-with-copilot-in-outlook-8090e7b3-5b1d-4c6d-9b06-02edac062f58)
+
+[Draft an email message with Copilot in Outlook](https://support.microsoft.com/en-us/office/draft-an-email-message-with-copilot-in-outlook-3eb1d053-89b8-491c-8a6e-746015238d9b)
+
+[Make email drafts sound like you](https://support.microsoft.com/en-us/topic/ask-copilot-to-make-email-drafts-sound-like-you-62cbb77e-2828-4ff2-826e-ca09b1f4e803)
+
+[Summarize an email thread](https://support.microsoft.com/en-us/office/summarize-an-email-thread-with-copilot-in-outlook-a79873f2-396b-46dc-b852-7fe5947ab640)
+
+[Email coaching](https://support.microsoft.com/en-us/office/get-email-coaching-with-copilot-in-outlook-91a3cd56-1586-4a31-85c7-2eb8cdb02405)
+
+[Create a meeting agenda with Copilot in Outlook](https://support.microsoft.com/en-us/office/create-a-meeting-agenda-with-copilot-in-outlook-31a44dfa-62bb-4751-82c4-14327a26759f)
+
+
 ### Microsoft 365 Copilot app
 #### Get started
 [Get started](https://learn.microsoft.com/en-us/topic/welcome-to-the-microsoft-365-copilot-app-092599f1-5917-4bd6-bd59-58af628bbc39)
