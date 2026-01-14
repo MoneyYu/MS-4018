@@ -1,0 +1,1 @@
+Demo pack for MS-4018. Upload the Docs and Data folders to OneDrive/SharePoint before class.
