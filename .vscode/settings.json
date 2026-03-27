@@ -1,0 +1,76 @@
+{
+  // ========================================
+  // GitHub Copilot Agent Mode 自動化設定
+  // ========================================
+  // 自動允許終端機指令執行（不需手動確認）
+  "chat.commandCenter.enabled": true,
+  // Agent Mode 自動執行設定
+  "github.copilot.chat.agent.autoApprove": true,
+  "github.copilot.chat.agent.autoApproveTerminalCommands": true,
+  "github.copilot.chat.agent.autoApproveFileEdits": true,
+  // 自動信任此 workspace 的終端指令
+  "github.copilot.chat.terminalChatLocation": "terminal",
+  // 擴展執行時間限制（設定較長時間）
+  "github.copilot.chat.agent.maxTurns": 100,
+  // 允許 Agent 自動執行的指令模式
+  "github.copilot.chat.agent.trustedCommands": [
+    "npm *",
+    "npx *",
+    "pnpm *",
+    "yarn *",
+    "git *",
+    "gh *",
+    "node *",
+    "tsc *",
+    "eslint *",
+    "prettier *",
+    "cd *",
+    "mkdir *",
+    "rm *",
+    "cp *",
+    "mv *",
+    "cat *",
+    "ls *",
+    "dir *",
+    "echo *",
+    "code *",
+    "pod *",
+    "npx react-native *",
+    "npx expo *"
+  ],
+  // ========================================
+  // 編輯器設定
+  // ========================================
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  // ========================================
+  // TypeScript 設定
+  // ========================================
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "chat.tools.terminal.autoApprove": {
+    "/^cd c:\\\\Users\\\\tzyu\\\\Source\\\\Repos\\\\Mone\\\\src\\\\web; npm run type-check$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "adb": true,
+    "npx wrangler": true
+  },
+  "java.configuration.updateBuildConfiguration": "disabled",
+  // ========================================
+  // Terminal 設定 - 強制使用 PowerShell 7
+  // ========================================
+  "terminal.integrated.defaultProfile.windows": "PowerShell 7",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell 7": {
+      "path": "${env:ProgramFiles}\\PowerShell\\7\\pwsh.exe",
+      "icon": "terminal-powershell",
+      "args": [
+        "-NoLogo"
+      ]
+    },
+    "Windows PowerShell": null
+  }
+}
