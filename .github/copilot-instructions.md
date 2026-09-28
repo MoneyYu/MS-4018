@@ -1,0 +1,8 @@
+# MS-4018 repository guidance
+
+- The current course is MS-4018-A, **Draft, analyze, and present with Microsoft 365 Copilot**. Check the [course](https://learn.microsoft.com/en-us/training/courses/ms-4018) and [seven-module learning path](https://learn.microsoft.com/en-us/training/paths/draft-analyze-present-microsoft-365-copilot/) before each delivery; titles, labs, and product capabilities can change.
+- `README.md` is the attendee-facing HackMD page: preserve YAML front-matter, `:::success` / `:::info` blocks, and the `markmap` fence. Group `## Links` and mind-map branches by the current seven official modules. Put standalone links immediately after headings and separate links with one blank line. Use one video table with a **Module** column and only live videos on verified official Microsoft channels.
+- Link each lab repo's hosted instruction **index** and one archive; do not enumerate exercises or include unavailable language links. Update Date, Course ID, survey, and Skillable training key only for a new delivery with supplied values.
+- Keep trainer-specific material in `docs/`, not the attendee README. The `DEMO/` scenarios support live app demonstrations; this course has no Azure infrastructure or Terraform/Foundry model stack.
+- Verify links with `python .github/skills/course-prep/scripts/link_check.py <label-pipe-url-list>` (review status, canonical destination, title, locale, and video channel manually; the script prints errors but does not return a failing exit code). Re-check before each delivery.
+- `PPT/` is local-only. Mark committed Office files and images binary in `.gitattributes`; never commit the local decks, credentials, or generated state.

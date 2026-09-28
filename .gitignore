@@ -1,6 +1,11 @@
 # Local .terraform directories
 .terraform/
 
+# Instructor slide decks remain local.
+PPT/
+.venv/
+.terraform.lock.hcl
+
 # .tfstate files
 *.tfstate
 *.tfstate.*
