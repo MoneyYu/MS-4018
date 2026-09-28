@@ -15,17 +15,15 @@ Course ID: 92781
 :::
 
 :::info
-Post Course Survey: Ask your instructor for this class's link. The previous delivery's `aka.ms/ms4018survey` link is unavailable.
+Post Course Survey: [https://aka.ms/ms4018survey](https://aka.ms/ms4018survey)
 :::
 
 ## Course Materials
-[Course MS-4018-A](https://learn.microsoft.com/en-us/training/courses/ms-4018)
+[Course MS-4018 English version](https://learn.microsoft.com/en-us/training/paths/draft-analyze-present-microsoft-365-copilot/)
 
-[Learning Path (English)](https://learn.microsoft.com/en-us/training/paths/draft-analyze-present-microsoft-365-copilot/)
+[Course MS-4018 简体中文版本](https://learn.microsoft.com/zh-cn/training/paths/draft-analyze-present-microsoft-365-copilot/)
 
-[Learning Path (简体中文)](https://learn.microsoft.com/zh-cn/training/paths/draft-analyze-present-microsoft-365-copilot/)
-
-[Learning Path (繁體中文)](https://learn.microsoft.com/zh-tw/training/paths/draft-analyze-present-microsoft-365-copilot/)
+[Course MS-4018 正體中文版本](https://learn.microsoft.com/zh-tw/training/paths/draft-analyze-present-microsoft-365-copilot/)
 
 ## Infos
 [LxP Portal](https://esi.microsoft.com/)
@@ -38,10 +36,6 @@ Post Course Survey: Ask your instructor for this class's link. The previous deli
 
 :::success
 Training key: 247579E344E92E6D
-:::
-
-:::info
-Redeem the training key once; access is valid for six months.
 :::
 
 ### Instruction
