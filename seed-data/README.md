@@ -26,6 +26,18 @@ Ford 只 seed OneDrive（五本 Excel）、Outlook（五條 threads）與 Teams�
 
 Generator 依 pack 宣告輸出與執行必要 phase：Ford 為 0→0.5→2→3→4；MS-4022 為 0→0.5→7。不指定的 surface 不建立；每個 role 必有 UPN 且 preflight 查 `accountEnabled`；禁止建立帳號／將客戶名稱寫進持久身份。任一唯讀查詢失敗或資源不明確時停止，不會將錯誤解讀為「不存在」。
 
+## 跨情境與跨課程的適用邊界
+
+**目前可重用已支援的資料類型，不等於所有 Microsoft 365 課程都能零改碼使用。** [`generator/pack.schema.json`](generator/pack.schema.json) 僅接受 Teams 頻道、Outlook 郵件串、Excel 活頁簿與 SharePoint 站台／清單等宣告；[`generator/build_scenario.py`](generator/build_scenario.py) 依 pack 產生所需 JSON、活頁簿及 runner，未宣告的階段不執行。OneDrive 是活頁簿的上傳目標，不是任意檔案格式的通用產生器。
+
+| 情境 | 目前證據與限制 |
+| --- | --- |
+| MS-4018 Ford：Teams、Outlook、Excel／OneDrive | WorkshopB 已完成線上灌入、唯讀 preflight 與一次重跑驗證；**原部分完成情境不得重跑**。換客戶仍須編寫新 pack、選不碰撞的日期／資源名稱、對應已存在帳號，並對新情境重新測試與核准寫入。 |
+| MS-4022 Product Support：SharePoint | 已有 SharePoint-only pack、日期化 runner 及離線產生測試；**本課程尚未執行線上寫入驗證**。 |
+| 其他 Microsoft 365 課程 | 若只需上述資料類型，且符合現有格式與安全前提，可評估沿用引擎；不得把 Ford 的成功視為新課程的授權、權限、索引或冪等性證明。其他工作負載尚無 pack 契約。 |
+
+後續若要主張「跨課程、跨客戶，僅改 seed data」：先把 `build_scenario.py` 寫死的 `MS-4018 demo`、簡體中文活頁簿說明及 `Products.zip` 封存檔名改由 pack 提供；目前課程代碼只接受兩個大寫字母加四位數（`^[A-Z]{2}-[0-9]{4}$`），其他格式需要重新定義及測試。再為新工作負載設計 schema／runner／唯讀 preflight 與冪等性測試；Calendar 與 Meeting Chats 雖有舊腳本，尚未納入 Customer Pack generator，亦未具備與已驗證階段相同的重跑保證。最後將版本化的 engine、generator 與 skill 明確帶入其他課程 repository，逐課程完成離線及線上驗證；此目錄的 project skill **不會自動套用至其他 repo**。不採用直接複製並宣稱通用的方式，因為不同引擎副本與未驗證階段的安全性可能不同。
+
 ## MS-4022 Product Support（保留舊情境與舊 engine）
 
 此工具會將官方 lab 的 Products 範例資料上傳到日期化的私人 Microsoft 365 Group site，並建立一份 `Support Cases` 清單，供 Product Support 宣告式代理程式作為 SharePoint knowledge source 與 connector tool 的資料來源。

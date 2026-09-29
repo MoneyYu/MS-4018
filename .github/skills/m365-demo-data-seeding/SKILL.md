@@ -47,15 +47,11 @@ For the actual scenarios currently in this workspace and their `-Industry` defau
 
 For a Teams/Outlook/Excel course demo, use the local `seed-data/packs/<scenario>/pack.yaml`
 and `seed-data/generator/build_scenario.py` instead of copying the unrelated SharePoint-only
-MS-4022 runner. Run from the **MS-4018 repository root**:
-
-```powershell
-$env:UV_INDEX_URL = 'https://packagefeedproxy.microsoft.io/pypi/simple/'
-uv run --no-project .\seed-data\generator\build_scenario.py --pack .\seed-data\packs\ms4018-ford-auto\pack.yaml --date 20260929 --output .\seed-data\scenarios\ms4018-ford-auto-20260929
-Set-Location .\seed-data\scenarios\ms4018-ford-auto-20260929
-pwsh -File .\run.ps1 -PreflightOnly
-# Run .\run.ps1 only after checking the preflight result and the local config.
-```
+MS-4022 runner. Follow [`seed-data/README.md`](../../../seed-data/README.md) for a **new**
+pack and destination; generated MS-4018 runners take `-PreflightOnly`, not the legacy
+`-Industry` shown in the generic template above. The original
+`ms4018-ford-auto-20260929` is **partial and must never be run again**. The completed
+WorkshopB scenario needs no further live execution.
 
 The generator refuses to overwrite an existing dated scenario. Copy `config.json.example`
 to the gitignored `config.json` and provide existing app credentials locally; NEVER put
@@ -82,6 +78,14 @@ trainer instructions are Traditional Chinese. Generated Excel sheets use named T
 formula columns, deterministic rows (`generate.seed`) and planted anomalies for analysis.
 OneDrive receives immutable dated files, not updates in place. Outlook mail timestamps
 are execution-time, not historic; Teams migrated channel messages can be historic.
+
+**Cross-course applicability is conditional.** See
+[`seed-data/README.md`](../../../seed-data/README.md) for the supported-surface matrix,
+Ford live evidence, MS-4022 offline-only evidence and the follow-up work needed before
+promising data-only reuse in another Microsoft 365 course. This project-local generator
+does not support arbitrary workloads or automatically install this skill in other repos.
+Calendar and Meeting Chats remain unhardened; do not enable them merely because their
+engine scripts exist.
 
 ## ⛔ Shared-Tenant Safety — recovery NEVER deletes
 
