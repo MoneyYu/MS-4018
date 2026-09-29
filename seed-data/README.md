@@ -24,7 +24,7 @@ Ford 只 seed OneDrive（五本 Excel）、Outlook（五條 threads）與 Teams�
 
 ## 換客戶：建立 Customer Pack
 
-複製 [`packs/ms4018-ford-auto/pack.yaml`](packs/ms4018-ford-auto/pack.yaml) 的**欄位結構**到新檔，改寫 `customer`、`roles`、Teams／Outlook 故事與 `workbooks` 表格數據；`course`／`slug` 決定中立的 dated 名稱。完整資料形狀見 [`generator/pack.schema.json`](generator/pack.schema.json)。相同日期不可與其他客戶重用 Team 名稱或郵件首封主旨；在共用 tenant 中須為新場次挑選唯一名稱。`workbooks` 可用顯式 `rows`，或 `generate` 的 `seed`、`dimensions`、`periods`、`min`、`max`、`overrides` 生成可重現的資料，再用 `formulas` 插入公式欄，`chart` 增加圖表。每本 workbook 用 Excel Table 命名，方便 Copilot in Excel 指定範圍。
+複製 [`packs/ms4018-ford-auto/pack.yaml`](packs/ms4018-ford-auto/pack.yaml) 的**欄位結構**到新檔，改寫 `customer`、`roles`、Teams／Outlook 故事與 `workbooks` 表格數據；Team 名稱固定為 `<YYYYMMDD>-<course.code>`（本次 `20260929-MS-4018`），OneDrive 資料夾仍由 `course.code`、中立 `course.purpose`、日期組成，郵件首封主旨仍必須唯一。完整資料形狀見 [`generator/pack.schema.json`](generator/pack.schema.json)。同一課程同一天的另一情境**不能靠改 purpose 取得不同 Team 名稱**；preflight 發現碰撞就停止，不自行加尾碼、刪除或改名，須另選場次日期。`workbooks` 可用顯式 `rows`，或 `generate` 的 `seed`、`dimensions`、`periods`、`min`、`max`、`overrides` 生成可重現的資料，再用 `formulas` 插入公式欄，`chart` 增加圖表。每本 workbook 用 Excel Table 命名，方便 Copilot in Excel 指定範圍。
 
 Generator 依 pack 宣告輸出與執行必要 phase：Ford 為 0→0.5→2→3→4；MS-4022 為 0→0.5→7。不指定的 surface 不建立；每個 role 必有 UPN 且 preflight 查 `accountEnabled`；禁止建立帳號／將客戶名稱寫進持久身份。任一唯讀查詢失敗或資源不明確時停止，不會將錯誤解讀為「不存在」。
 

@@ -306,7 +306,7 @@ def build_scenario(pack_path, date, output):
         "clientSecret": "<local-secret>",
         "adminUpn": pack["roles"]["Admin"]["upn"],
         "demoUserUpn": pack["roles"]["Admin"]["upn"],
-        "teamDisplayName": f'{pack["course"]["code"]} {pack["course"]["purpose"]} — {date[:4]}-{date[4:6]}-{date[6:]}',
+        "teamDisplayName": f'{date}-{pack["course"]["code"]}',
         "teamDescription": f'{pack["course"]["code"]} dated training demo',
         "filesSourceDir": pack.get("sourceArchive", {}).get("dir", "DEMO-FILE"),
         "roles": pack["roles"],

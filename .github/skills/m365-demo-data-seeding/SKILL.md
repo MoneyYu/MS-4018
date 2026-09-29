@@ -66,9 +66,11 @@ creates a user, and new Customer Packs omit Phase 1 (profile PATCH) entirely. Ea
 must correspond to an existing enabled person; the instructor logs in as `adminUpn` only.
 
 **Customer identity belongs in narrative content only** (email body, Teams message,
-Excel sheet). Persistent Team/Group/Site names use neutral course + purpose + delivery date,
-not customer + date. When another customer shares a date, assign a *different neutral purpose
-identifier*, check it in read-only preflight, and use distinct dated email subjects. Never
+Excel sheet). Persistent Team names use `<YYYYMMDD>-<courseCode>`; Group/Site names
+remain neutral course + purpose + delivery date, not customer + date. Two customers on
+the same course and date cannot get different Team names by changing purpose: fail closed
+in read-only preflight, do not append a suffix, and use a different delivery date. Keep
+dated email subjects distinct. Never
 treat a recorded ID, an exact name match or a successful GET as post-run authorization to
 repair/rename/delete; see [Shared-Tenant Safety](#-shared-tenant-safety--recovery-never-deletes).
 
@@ -91,7 +93,8 @@ There is no cleanup mode, no "clean rerun", and no supported delete path in this
 1. **Never delete a group, team, site, channel, chat, message or file that was selected by
    `displayName`, alias/`mailNickname`, `createdDateTime`, match count, or "the latest N".**
    An exact `displayName` match is **not** ownership proof: the naming convention is
-   *course code + purpose + date*, it is published in this skill, and any instructor sharing the
+   *date + course code* for Teams (course + purpose + date for Groups/Sites); it is published
+   in this skill, and any instructor sharing the
    tenant can reproduce it. Duplicates are precisely the state in which the name has **stopped**
    identifying one resource — that is the moment a name-based delete is most likely to destroy
    somebody else's demo.
@@ -534,13 +537,13 @@ The tenant's **identity layer** (user profile `jobTitle`/`department`, Group `di
 |---|---|---|
 | User `jobTitle` | `數位轉型專案經理` | `國泰人壽 商品企劃協理` |
 | User `department` | `金融事業處 / 數位金融部` | `國泰金控 / 數位金融處` |
-| Team `displayName` | `MS-4019 Demo — 2026-05-15` | `國泰集團 — MS-4019 Demo` |
+| Team `displayName` | `20260515-MS-4019` | `國泰集團 — MS-4019 Demo` |
 | SharePoint site alias | `ms4019-compliance-20260515` | `cathay-compliance` |
 | SharePoint site `displayName` | `MS-4019 — 法遵與風險 — 2026-05-15` | `國泰金控 — 法令遵循處` |
 
 **Conventions**
 
-- Use **course code + date** (`<courseCode>-<purpose>-YYYYMMDD`) for Groups/Sites — guarantees uniqueness across courses run in the same tenant year-round.
+- Use **date + course code** (`YYYYMMDD-<courseCode>`) for Teams. For Groups/Sites, keep the existing neutral course + purpose + date convention. A second Team for the same course/date needs a different delivery date; a different purpose does not change its name.
 - Use **tenant-default generic department names** for `user-profiles.json` profiles. They typically already exist in the tenant directory (e.g. moneyyu: `金融事業處 / 法令遵循部`). **The seeder's Phase 1 should be a no-op** that re-asserts those defaults — never a customer-specific override.
 - Email signatures, calendar locations, list items, and document contents **may** reference the customer (`國泰金控總部 18F`, signature `Christie Cline / 國泰人壽`). This is storytelling, not identity.
 
@@ -841,7 +844,7 @@ Default Phase 7 produces functional but **template-looking** sites. To make them
 |---|---|---|
 | MS-4018 `config.json` appears in `git status` | Copied seed-data without its `.gitignore` rules | Add `seed-data/scenarios/*/config.json`, `*/source/`, `*/Products.zip` and `*/sharepoint-runtime.json` excludes; verify with `git check-ignore -v` **before** staging. Never print or commit credentials. |
 | New Customer Pack role cannot be resolved | UPN absent or disabled, or pack guesses a new person | Stop at Phase 0.5; reconcile roles against the tenant's existing enabled users by GET. **Never create a user** to make a demo pass. |
-| Same-date second customer collides with Ford Team or mail subjects | Neutral purpose or dated subject reused | Give the second scenario a different **neutral purpose** and dated subject; run read-only preflight; never delete the existing team's messages. |
+| Same-date second customer collides with Ford Team or mail subjects | Team names are fixed to `YYYYMMDD-<courseCode>`; the first mail subject might also be reused | Choose a different delivery date for a second Team of the same course and unique first mail subjects; run read-only preflight. Changing purpose only changes the OneDrive folder, not the Team. Never rename or delete an existing Team. |
 | Workbook has fewer facts than Teams/Outlook narrative | Pack source and generated data diverged | Validate the source pack's numeric invariants and regenerated workbook before seeding; never overwrite an already-seeded filename. |
 | Archived MS-4022 runner refuses live execution | Legacy scenario format is incompatible with the new engine; old runner no longer seeds | Use the generated dated `ms4022-productsupport-20260929/run.ps1 -PreflightOnly` after reviewing its local config. Do not bypass the archived runner's guard. |
 | MS-4022 document path repeats `source\Products` | Runtime `sourceFilename` was calculated relative to the scenario root instead of `filesSourceDir` | Generate filenames relative to `$source` so Phase 7 can join them to `filesSourceDir` exactly once; check all nine files before any write. |

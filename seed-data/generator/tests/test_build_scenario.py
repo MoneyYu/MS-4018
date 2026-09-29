@@ -112,6 +112,8 @@ def test_ford_outputs_only_declared_surfaces(tmp_path):
     assert not (output / "sharepoint-sites.json").exists()
     assert "Invoke-SeedUserProfiles" not in (output / "run.ps1").read_text(encoding="utf-8")
     assert "Invoke-SeedSharePoint" not in (output / "run.ps1").read_text(encoding="utf-8")
+    config = json.loads((output / "config.json.example").read_text(encoding="utf-8"))
+    assert config["teamDisplayName"] == "20260929-MS-4018"
     runner = (output / "run.ps1").read_text(encoding="utf-8")
     assert "PreflightOnly" in runner
     assert '$preflight.FilesManifestPath = Join-Path $root "files-manifest.json"' in runner

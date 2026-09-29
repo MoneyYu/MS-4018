@@ -4,7 +4,7 @@
   "clientSecret": "<local-secret>",
   "adminUpn": "admin@moneyyu.com",
   "demoUserUpn": "admin@moneyyu.com",
-  "teamDisplayName": "MS-4018 WorkshopB — 2026-09-29",
+  "teamDisplayName": "20260929-MS-4018",
   "teamDescription": "MS-4018 dated training demo",
   "filesSourceDir": "DEMO-FILE",
   "roles": {
