@@ -1,0 +1,177 @@
+{
+  "emailThreads": [
+    {
+      "threadName": "供应链电控交期预警",
+      "emails": [
+        {
+          "action": "send",
+          "fromRole": "Supply",
+          "toRoles": [
+            "Operations",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "【MS-4018 20260929】电控交期缺口330件：Q4排产预警",
+          "bodyHtml": "<p>各位好，9月计划到货1800件、按期1470件，缺口330件。请 Grady 核对安全库存、Megan 确认是否需要临时替代供应。此为模拟业务数据。</p>",
+          "order": 1
+        },
+        {
+          "action": "reply",
+          "fromRole": "Operations",
+          "toRoles": [
+            "Supply",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "Re: 【MS-4018 20260929】电控交期缺口330件：Q4排产预警",
+          "bodyHtml": "<p>已收到。苏州线先用安全库存排产，10月2日前给出产能影响评估；330件是交期缺口，不是已发生的召回。</p>",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "threadName": "B-0921 品质问题升级",
+      "emails": [
+        {
+          "action": "send",
+          "fromRole": "Quality",
+          "toRoles": [
+            "Engineering",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "【MS-4018 20260929】B-0921 抽检异常：请先隔离批次",
+          "bodyHtml": "<p>B-0921 电池组件抽检600件有36件异常，缺陷率6%。根因尚未确认，请先隔离未出库批次，不对外宣称召回。Allan 请在9月30日前回报分析。</p>",
+          "order": 1
+        },
+        {
+          "action": "reply",
+          "fromRole": "Engineering",
+          "toRoles": [
+            "Quality",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "Re: 【MS-4018 20260929】B-0921 抽检异常：请先隔离批次",
+          "bodyHtml": "<p>正在比对供应商制程与入厂检测记录；会在9月30日前提交证据和处置建议。现在尚不能判断是否需要车辆召回。</p>",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "threadName": "经销商库存调拨审批",
+      "emails": [
+        {
+          "action": "send",
+          "fromRole": "Sales",
+          "toRoles": [
+            "Planner",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "【MS-4018 20260929】上海一店库存240天：申请调拨40辆",
+          "bodyHtml": "<p>上海一店现车240辆、月销30辆，库存240天；北京一店120辆、月销60辆，库存60天。建议调拨40辆到北京；请先核实车型配置与运输成本。</p>",
+          "order": 1
+        },
+        {
+          "action": "reply",
+          "fromRole": "Planner",
+          "toRoles": [
+            "Sales",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "Re: 【MS-4018 20260929】上海一店库存240天：申请调拨40辆",
+          "bodyHtml": "<p>建议合理，但尚未批准。请 Nestor 在10月2日前提交车型及运费明细给 Megan 审批，复盘中标为“待审批”。</p>",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "threadName": "西区 NPS 下降调查",
+      "emails": [
+        {
+          "action": "send",
+          "fromRole": "Analytics",
+          "toRoles": [
+            "Sales",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "【MS-4018 20260929】西区 NPS=31：需核查售后反馈",
+          "bodyHtml": "<p>西区100份问卷：推荐者62、贬损者31，NPS=31；东区100份问卷：推荐者70、贬损者16，NPS=54，相差23分。备件等待仅是假设，不可当作已证实根因。</p>",
+          "order": 1
+        },
+        {
+          "action": "reply",
+          "fromRole": "Sales",
+          "toRoles": [
+            "Analytics",
+            "Sponsor"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "Re: 【MS-4018 20260929】西区 NPS=31：需核查售后反馈",
+          "bodyHtml": "<p>已安排售后团队抽样复核，10月5日前给出反馈分类和改进建议；目前不把交期缺口330件与 NPS 差距直接画等号。</p>",
+          "order": 2
+        }
+      ]
+    },
+    {
+      "threadName": "Q3 经营复盘材料请求",
+      "emails": [
+        {
+          "action": "send",
+          "fromRole": "Sponsor",
+          "toRoles": [
+            "Planner",
+            "Sales",
+            "Supply",
+            "Quality",
+            "Operations",
+            "Analytics"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "【MS-4018 20260929】请汇总Q3经营复盘及Q4行动",
+          "bodyHtml": "<p>请各团队核对同一批模拟数据：Mach-E Q3销量860辆/目标960辆；上海库存240天、调拨40辆待审批；电控缺口330件；B-0921 缺陷6%仍在调查；西区 NPS=31；苏州良率92.4%。9月29日提交要点，未确认事项单独标注。</p>",
+          "order": 1
+        },
+        {
+          "action": "reply",
+          "fromRole": "Planner",
+          "toRoles": [
+            "Sponsor",
+            "Sales",
+            "Supply",
+            "Quality",
+            "Operations",
+            "Analytics"
+          ],
+          "ccRoles": [
+            "Admin"
+          ],
+          "subject": "Re: 【MS-4018 20260929】请汇总Q3经营复盘及Q4行动",
+          "bodyHtml": "<p>收到。我会先用 Excel 工作表核对数字，再以 Teams channel 决策和邮件回复更新行动清单；不将模拟数据当成真实公开业绩。</p>",
+          "order": 2
+        }
+      ]
+    }
+  ]
+}

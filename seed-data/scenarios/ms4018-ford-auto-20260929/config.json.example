@@ -1,0 +1,48 @@
+{
+  "tenantId": "<tenant-guid>",
+  "clientId": "<app-client-id>",
+  "clientSecret": "<local-secret>",
+  "adminUpn": "admin@moneyyu.com",
+  "demoUserUpn": "admin@moneyyu.com",
+  "teamDisplayName": "MS-4018 Demo — 2026-09-29",
+  "teamDescription": "MS-4018 dated training demo",
+  "filesSourceDir": "DEMO-FILE",
+  "roles": {
+    "Admin": {
+      "upn": "admin@moneyyu.com",
+      "displayName": "Tenant Admin"
+    },
+    "Sponsor": {
+      "upn": "MeganB@moneyyu.com",
+      "displayName": "Megan Bowen"
+    },
+    "Planner": {
+      "upn": "AdeleV@moneyyu.com",
+      "displayName": "Adele Vance"
+    },
+    "Sales": {
+      "upn": "NestorW@moneyyu.com",
+      "displayName": "Nestor Wilke"
+    },
+    "Supply": {
+      "upn": "AlexW@moneyyu.com",
+      "displayName": "Alex Wilber"
+    },
+    "Quality": {
+      "upn": "DebraB@moneyyu.com",
+      "displayName": "Debra Berger"
+    },
+    "Operations": {
+      "upn": "GradyA@moneyyu.com",
+      "displayName": "Grady Archie"
+    },
+    "Engineering": {
+      "upn": "AllanD@moneyyu.com",
+      "displayName": "Allan Deyoung"
+    },
+    "Analytics": {
+      "upn": "DiegoS@moneyyu.com",
+      "displayName": "Diego Siciliani"
+    }
+  }
+}

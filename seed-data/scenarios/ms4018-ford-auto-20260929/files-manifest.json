@@ -1,0 +1,21 @@
+{
+  "targetFolder": "MS4018-Demo-20260929",
+  "uploadToRole": "Admin",
+  "files": [
+    {
+      "localName": "新车销售追踪.xlsx"
+    },
+    {
+      "localName": "经销商库存.xlsx"
+    },
+    {
+      "localName": "零部件品质追踪.xlsx"
+    },
+    {
+      "localName": "售后NPS.xlsx"
+    },
+    {
+      "localName": "工厂KPI.xlsx"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "sites": [
+    {
+      "alias": "ms4022-productsupport-{{DATE}}",
+      "displayName": "MS-4022 - Product support - {{DATE}}",
+      "description": "MS-4022 Product Support declarative agent knowledge source.",
+      "owners": ["Admin"],
+      "members": ["DemoUser"],
+      "documents": [],
+      "lists": [
+        {
+          "displayName": "Support Cases",
+          "description": "Recent Contoso Electronics product support cases used to demo connector tools.",
+          "keyField": "Title",
+          "columns": [
+            { "name": "Product", "text": {} },
+            { "name": "IssueSummary", "text": {} },
+            { "name": "Status", "choice": { "choices": ["New", "In progress", "Waiting on customer", "Resolved"] } },
+            { "name": "Priority", "choice": { "choices": ["Low", "Medium", "High"] } },
+            { "name": "OpenedDate", "dateTime": { "format": "dateOnly" } },
+            { "name": "AssignedTeam", "text": {} }
+          ],
+          "items": [
+            { "Title": "CASE-1001", "Product": "Eagle Air", "IssueSummary": "Battery drains faster than expected on long survey flights.", "Status": "In progress", "Priority": "High", "OpenedDate": "2026-08-03", "AssignedTeam": "Field Support" },
+            { "Title": "CASE-1002", "Product": "Contoso Quad", "IssueSummary": "Propeller guard cracked after a low-speed collision.", "Status": "Waiting on customer", "Priority": "Medium", "OpenedDate": "2026-08-05", "AssignedTeam": "Repairs" },
+            { "Title": "CASE-1003", "Product": "Mark8", "IssueSummary": "Camera gimbal drifts during hover.", "Status": "New", "Priority": "High", "OpenedDate": "2026-08-10", "AssignedTeam": "Engineering" },
+            { "Title": "CASE-1004", "Product": "Mark8 controller", "IssueSummary": "Controller fails to pair after the latest firmware update.", "Status": "In progress", "Priority": "High", "OpenedDate": "2026-08-11", "AssignedTeam": "Field Support" },
+            { "Title": "CASE-1005", "Product": "Gimbal Case", "IssueSummary": "Latch does not close securely when the case is full.", "Status": "Resolved", "Priority": "Low", "OpenedDate": "2026-07-28", "AssignedTeam": "Repairs" },
+            { "Title": "CASE-1006", "Product": "Eagle Air", "IssueSummary": "Customer asks which warranty extension options apply.", "Status": "Resolved", "Priority": "Low", "OpenedDate": "2026-07-30", "AssignedTeam": "Customer Care" },
+            { "Title": "CASE-1007", "Product": "Contoso Quad", "IssueSummary": "Return requested within the 30-day window.", "Status": "Waiting on customer", "Priority": "Medium", "OpenedDate": "2026-08-14", "AssignedTeam": "Customer Care" },
+            { "Title": "CASE-1008", "Product": "Mark8", "IssueSummary": "Customer asks about repair turnaround time.", "Status": "New", "Priority": "Medium", "OpenedDate": "2026-08-17", "AssignedTeam": "Repairs" }
+          ]
+        }
+      ]
+    }
+  ]
+}

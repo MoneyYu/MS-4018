@@ -1,0 +1,167 @@
+{
+  "channels": [
+    {
+      "channelName": "新车上市",
+      "channelDescription": "2026 Q3 电动车上市、销售追踪与 Q4 行动",
+      "messages": [
+        {
+          "fromRole": "Planner",
+          "bodyHtml": "<p>【Q3复盘】Mach-E 7月280辆、8月300辆、9月截至28日累计280辆，Q3截至28日共860辆，比960辆目标少100辆。请各位从库存与供应两侧找原因。<at id=\"0\">Nestor Wilke</at> 请提供经销商分布。</p>",
+          "mentions": [
+            "Sales"
+          ],
+          "order": 1,
+          "createdDateTime": "2026-09-10T09:30:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Sales",
+              "bodyHtml": "<p>收到。上海一店现车240辆，月销仅30辆，库存天数240天；北京一店120辆、月销60辆，仅60天。问题是区域配置，不是总量不足。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-10T10:15:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Sponsor",
+          "bodyHtml": "<p>Q4行动原则：先调拨库存、再讨论新增促销。9月29日请提交各团队一页结论，数字必须与 Excel 原始表核对。不得把内部模拟数据描述为福特官方业绩。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-09-27T16:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Planner",
+              "bodyHtml": "<p>同意。复盘将分别标注“模拟数据”，并把上市、库存、供应、售后和工厂五条线放在同一张行动清单中。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-27T16:25:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "经销商与库存",
+      "channelDescription": "区域销量、库存天数与调拨决策",
+      "messages": [
+        {
+          "fromRole": "Sales",
+          "bodyHtml": "<p>库存日报：上海一店现车240辆、月销30辆（240天）；北京一店120辆、月销60辆（60天）；广州一店80辆、月销40辆（60天）。建议上海先向北京调拨40辆，暂缓追加采购。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-09-13T11:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Planner",
+              "bodyHtml": "<p>请先核对跨区域物流成本与车型配置。40辆调拨是待审批建议，不是已完成动作。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-13T11:30:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Sales",
+          "bodyHtml": "<p>复盘表已准备：上海库存天数异常仍为240天；北京与广州各60天。Q4建议调拨40辆，负责人 Nestor，审批人 Megan，截止10月2日。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-09-28T14:10:00+08:00",
+          "replies": []
+        }
+      ]
+    },
+    {
+      "channelName": "供应链与品质",
+      "channelDescription": "电控交期、B-0921 批次品质调查",
+      "messages": [
+        {
+          "fromRole": "Supply",
+          "bodyHtml": "<p>【风险预警】9月电控计划到货1800件，实际按期1470件，缺口330件；请工厂先用现有安全库存排产，不能将缺口误报为召回数量。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-09-16T09:20:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Operations",
+              "bodyHtml": "<p>苏州工厂会评估安全库存；请 Alex 9月26日前提供补货日期，缺口330件与 B-0921 品质问题分开追踪。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-16T09:45:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Quality",
+          "bodyHtml": "<p>电池组件 B-0921 抽检600件发现36件异常，缺陷率6%；仍为内部调查，尚未确认车辆召回。<at id=\"0\">Allan Deyoung</at> 请在9月30日前完成根因分析。</p>",
+          "mentions": [
+            "Engineering"
+          ],
+          "order": 2,
+          "createdDateTime": "2026-09-21T13:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Engineering",
+              "bodyHtml": "<p>根因尚未确认。先隔离 B-0921 未出库批次，再核对供应商制程与入厂检测记录；禁止对外称“已召回”。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-21T14:05:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "售后与客户体验",
+      "channelDescription": "NPS、客诉分类与待确认行动",
+      "messages": [
+        {
+          "fromRole": "Analytics",
+          "bodyHtml": "<p>模拟售后调研各区域样本量均100：西区推荐者62、贬损者31，NPS=31；东区70、16，NPS=54。西区落后东区23分，先核对交付体验与维修等待时间。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-09-23T10:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Sales",
+              "bodyHtml": "<p>西区反馈包含备件等待，但目前只是相关线索，不等于缺口330件直接导致 NPS 下降。请售后提供客诉原文后再判断。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-23T10:25:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Sponsor",
+          "bodyHtml": "<p>请售后团队在10月5日前复核西区 NPS=31 的100份样本，给出分渠道改进建议；复盘不可把相关性写成因果结论。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-09-28T15:00:00+08:00",
+          "replies": []
+        }
+      ]
+    },
+    {
+      "channelName": "工厂运营",
+      "channelDescription": "苏州与重庆工厂良率、瓶颈及改善措施",
+      "messages": [
+        {
+          "fromRole": "Operations",
+          "bodyHtml": "<p>苏州工厂本周投入1000件、合格924件，良率92.4%，低于97.5%目标5.1个百分点；重庆投入1000件、合格980件，良率98%。请区分生产良率与抽检 B-0921 的缺陷率。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-09-24T08:40:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Quality",
+              "bodyHtml": "<p>会分开呈现：苏州全线良率92.4%与电池组件批次 B-0921 抽检缺陷率6%，基数与范围不同，不能直接相减或归因。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-09-24T09:05:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Sponsor",
+          "bodyHtml": "<p>10月3日前由 Grady 提交苏州线体改善计划，优先排查设备换线及来料检验；先拿到工程与品质联合证据，再决定资源投入。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-09-28T17:20:00+08:00",
+          "replies": []
+        }
+      ]
+    }
+  ]
+}

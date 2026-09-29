@@ -1,0 +1,14 @@
+{
+  "tenantId": "<tenant-guid>",
+  "clientId": "<app-registration-client-id>",
+  "clientSecret": "<app-registration-client-secret>",
+  "filesSourceDir": "source/Products",
+  "roles": {
+    "Admin": {
+      "upn": "admin@contoso.com"
+    },
+    "DemoUser": {
+      "upn": "demo.user@contoso.com"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["slug", "customer", "course", "tenantDomain", "roles"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "customer": {
+      "type": "object",
+      "required": ["name", "industry", "locale"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "industry": {"type": "string"},
+        "locale": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "course": {
+      "type": "object",
+      "required": ["code", "purpose"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[A-Z]{2}-[0-9]{4}$"},
+        "purpose": {"type": "string", "pattern": "^[A-Za-z0-9 -]+$"}
+      },
+      "additionalProperties": false
+    },
+    "tenantDomain": {"type": "string", "minLength": 3},
+    "roles": {
+      "type": "object",
+      "minProperties": 2,
+      "required": ["Admin"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["upn", "displayName"],
+        "properties": {
+          "upn": {"type": "string", "minLength": 5},
+          "displayName": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "teams": {"type": "object", "required": ["channels"]},
+    "emails": {"type": "object", "required": ["emailThreads"]},
+    "workbooks": {"type": "array", "items": {"type": "object", "required": ["filename", "sheets"]}},
+    "sharepoint": {"type": "object", "required": ["sites"]},
+    "sourceArchive": {
+      "type": "object",
+      "required": ["url", "dir", "expectedFileCount"],
+      "properties": {
+        "url": {"type": "string", "pattern": "^https://"},
+        "dir": {"type": "string", "minLength": 1},
+        "expectedFileCount": {"type": "integer", "minimum": 1},
+        "extraFileUrl": {"type": "string", "pattern": "^https://"},
+        "extraFileName": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "anyOf": [
+    {"required": ["teams"]},
+    {"required": ["emails"]},
+    {"required": ["workbooks"]},
+    {"required": ["sharepoint"]}
+  ]
+}
