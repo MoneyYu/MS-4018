@@ -8,6 +8,9 @@
 | --- | --- | --- |
 | [`DEMO/20260115-MEGABANK/`](../DEMO/20260115-MEGABANK/) | 單一情境：文件草擬、資料分析、會議／簡報與 agent 範例。 | [`MS-4018_Full_LiveDemo_Runbook_兆豐銀行.md`](../DEMO/20260115-MEGABANK/MS-4018_Full_LiveDemo_Runbook_兆豐銀行.md) |
 | [`DEMO/20260327-LiteOn/`](../DEMO/20260327-LiteOn/) | 四組情境：供應鏈品質、ESG 碳盤查、新產品策略、全球營運；各有 story、docs、data、prompts、agents 等。 | [`00_Readme.txt`](../DEMO/20260327-LiteOn/00_Readme.txt) |
+| [`DEMO/20260929-Ford/`](../DEMO/20260929-Ford/) | 一條虛構的福特汽車業務故事：Teams 五個 channel、Outlook 郵件串、Excel 五本資料表。簡體中文資料、繁體中文講師手冊。 | [`MS-4018_LiveDemo_Runbook_Ford.md`](../DEMO/20260929-Ford/MS-4018_LiveDemo_Runbook_Ford.md) |
+
+Ford Demo 由 [`seed-data/packs/ms4018-ford-auto/pack.yaml`](../seed-data/packs/ms4018-ford-auto/pack.yaml) 產生；依 [`seed-data/README.md`](../seed-data/README.md) 使用 `uv` generator，先 `-PreflightOnly` 唯讀驗證現有 tenant 帳號，再決定是否執行。不得建立使用者或改寫共用身份；所有數字均為模擬，不是 Ford 真實業績。
 
 ## 課前檢查
 

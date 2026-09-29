@@ -6,6 +6,15 @@ PPT/
 .venv/
 .terraform.lock.hcl
 
+# Local Microsoft 365 seeding credentials and downloaded lab assets
+seed-data/scenarios/*/config.json
+seed-data/scenarios/*/source/
+seed-data/scenarios/*/Products.zip
+seed-data/scenarios/*/sharepoint-runtime.json
+seed-data/scenarios/*/onedrive-receipt.json
+__pycache__/
+.pytest_cache/
+
 # .tfstate files
 *.tfstate
 *.tfstate.*

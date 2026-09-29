@@ -1,0 +1,20 @@
+{
+  "tenantId": "<tenant-guid>",
+  "clientId": "<app-client-id>",
+  "clientSecret": "<local-secret>",
+  "adminUpn": "admin@moneyyu.com",
+  "demoUserUpn": "admin@moneyyu.com",
+  "teamDisplayName": "MS-4022 Product support — 2026-09-29",
+  "teamDescription": "MS-4022 dated training demo",
+  "filesSourceDir": "source/Products",
+  "roles": {
+    "Admin": {
+      "upn": "admin@moneyyu.com",
+      "displayName": "Tenant Admin"
+    },
+    "DemoUser": {
+      "upn": "LidiaH@moneyyu.com",
+      "displayName": "Lidia Holloway"
+    }
+  }
+}
