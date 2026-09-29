@@ -284,14 +284,14 @@ before promising a safe rerun.
 | Engine copy | Status | Safe to re-run? |
 |---|---|---|
 | `MoneyYu/MS-4018` → `seed-data/engine` + generated `ms4018-ford-auto-20260929` | First live run: five Excel files and one Outlook mail were written; reply lookup failed across mailbox-local `conversationId`s, so Teams never ran. The original scenario is partial. | ❌ Do not rerun the original scenario or delete its evidence |
-| `MoneyYu/MS-4018` → `seed-data/engine` + generated `ms4018-ford-auto-workshop-b-20260929` | Separate neutral names and new first-message subjects. Cross-mailbox reply fix passes the offline suite (**472 passed, 0 failed**); live write and idempotency for this scenario have **not** been verified. | ⚠️ Requires read-only preflight, write approval, live verification, and a complete-state preflight before any rerun |
+| `MoneyYu/MS-4018` → `seed-data/engine` + generated `ms4018-ford-auto-workshop-b-20260929` | **Live-verified**: five Excel files, five Outlook threads, one Team with five business channels and posts. One intentional full rerun exited 0 with five email and five channel-message skips; subsequent read-only preflight confirmed folder `Skip`, Team `Reuse`, five complete channels with messages `Skip`, five threads `Skip`, and no creates. Teams, Outlook and OneDrive content was also checked in the browser. Offline suite: **472 passed, 0 failed**. | ✅ Verified rerun with intact local receipt and exact remote proof; Team reuse still issues idempotent migration/member POSTs, so not a zero-write run |
 | `MoneyYu/PL-7008` → `seed-data/engine` + scenario `pl7008-it-helpdesk-20260831` | **Hardened and live-verified** (2026-08-31): read-only Phase 0.5 preflight, email/team/channel/message idempotency, exact-name file skip, fail-fast phase wrapper, Graph write responses suppressed, `seed-data/tests/Test-SeedEngine.ps1` offline suite | ✅ Yes — two consecutive runs produced identical tenant state |
 | `lettucebo/Work` → `20260507-PL7008-CopilotStudio/seed-data/engine` (legacy) | **Unpatched — unsafe for reruns.** Missing: email idempotency (re-POSTs threads), team/channel/message idempotency (unconditional create → `ChannelNameAlreadyExist` and duplicate content), read-only preflight content verification, fail-fast (a phase can fail and the run still prints success), upload-response suppression and exact-name file skip (re-uploads every file and prints the pre-authenticated download URL) | ❌ No |
 
 **Rules while the legacy copy is unpatched**
 
 - **Do not describe the Work legacy engine as idempotent** anywhere — docs, comments, chat or
-  commit messages. Only the PL-7008 copy is fixed and live-verified.
+  commit messages. Only the patched and live-verified copies above have rerun evidence.
 - Only its already-safe phases may be run, and only with deliberate operator review of what each
   phase will write. Never rerun its email or Teams phases against a tenant that already holds
   that scenario's data.
@@ -849,6 +849,7 @@ Default Phase 7 produces functional but **template-looking** sites. To make them
 | Archived MS-4022 runner refuses live execution | Legacy scenario format is incompatible with the new engine; old runner no longer seeds | Use the generated dated `ms4022-productsupport-20260929/run.ps1 -PreflightOnly` after reviewing its local config. Do not bypass the archived runner's guard. |
 | MS-4022 document path repeats `source\Products` | Runtime `sourceFilename` was calculated relative to the scenario root instead of `filesSourceDir` | Generate filenames relative to `$source` so Phase 7 can join them to `filesSourceDir` exactly once; check all nine files before any write. |
 | First Ford email appears in admin Inbox but not admin Sent Items | Supply (Alex) sent it; admin was CC, not sender. The first live run stopped before the reply | Verify the exact subject in admin Inbox or the actual sender's Sent Items. One visible message does not mean the five threads or Teams completed; never rerun the partial original scenario. |
+| Ford Team appears but business channels are absent from the sidebar | Teams may show only General until each other channel is made visible; this does not mean channel creation failed | Open the Team's **See all channels** list, verify the five business channels and their posts, then use **Show** to place them in the sidebar. Do not seed another Team based on sidebar visibility alone. |
 | Email send succeeds but reply target lookup times out | `conversationId` differs between sender and recipient mailboxes even for the same delivered message | Compare `internetMessageId` by read-only GET, then use the recipient's mailbox-local `id` for `/reply`; only a reviewed new scenario with new first subjects can be seeded. Do not delete or resend the original mail. |
 | Post-send Inbox GET returns 503 or 429 | Transient Graph failure while waiting for mail delivery | Retry only GET within the bounded polling budget (honor `Retry-After`); non-transient 403 aborts. Do not reissue `sendMail` or `/reply` after an uncertain response. |
 | Existing OneDrive demo folder lacks a matching local `onedrive-receipt.json` and remote `.ms4018-seed-proof.json` | The generated scenario did not prove ownership and exact file revisions | Stop before writing; do not adopt, overwrite, or repair the folder. Generate a new neutral dated scenario and retain its receipt for verified reruns. |
@@ -1209,9 +1210,12 @@ The skill defines an architecture, not specific scenarios. Each repo using this 
 **`MoneyYu/MS-4018`** (local Customer Pack generator + ported engine):
 
 - `seed-data/packs/ms4018-ford-auto/pack.yaml` → `scenarios/ms4018-ford-auto-20260929`:
-  5 Simplified Chinese Teams channels, 5 Outlook threads, 5 Excel workbooks uploaded
-  to admin OneDrive. Uses **existing manufacturing personas**; no user creation
-  and no profile PATCH. Read-only preflight first.
+  original partial run uploaded 5 Excel workbooks and sent one email. Do not rerun.
+- `seed-data/packs/ms4018-ford-auto-workshop-b/pack.yaml` →
+  `scenarios/ms4018-ford-auto-workshop-b-20260929`: complete live demo with
+  5 Simplified Chinese Teams channels, 5 Outlook threads and 5 Excel workbooks
+  in admin OneDrive. Uses **existing manufacturing personas**; no user creation
+  or profile PATCH. Read-only preflight and one idempotency rerun verified.
 - `seed-data/packs/ms4022-productsupport/pack.yaml` → dated SharePoint-only
   scenario: `Products` library + `Support Cases` list; preserves original
   `scenarios/ms4022-productsupport` unmodified. MS-4022 is not seeded live

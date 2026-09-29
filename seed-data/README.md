@@ -4,23 +4,21 @@
 
 ## 快速開始：Ford（2026-09-29）
 
-在專案根目錄執行（本機 Python 套件走指定內部 registry；不得把 secret 放進 pack）：
+下列是從專案根目錄**首次產生全新情境**的命令示例（本機 Python 套件走指定內部 registry；不得把 secret 放進 pack）。本次 WorkshopB 目錄已存在且已灌入，**不要原樣重跑或覆寫**；換客戶時須改用新的 pack、日期與輸出目錄：
 
 ```powershell
 $env:UV_INDEX_URL = 'https://packagefeedproxy.microsoft.io/pypi/simple/'
 uv run --no-project .\seed-data\generator\build_scenario.py --pack .\seed-data\packs\ms4018-ford-auto-workshop-b\pack.yaml --date 20260929 --output .\seed-data\scenarios\ms4018-ford-auto-workshop-b-20260929
 ```
 
-原 `ms4018-ford-auto-20260929` 已在租戶留下五本 Excel 及 Alex 寄出的第一封郵件（admin 在 Inbox 收到 CC）；回覆因跨信箱 `conversationId` 不同而失敗，**絕不可正式重跑原情境**。`WorkshopB` 是另一份相同課程日期、不同中立資源名稱與首封主旨的加法備案，目前只有本機產出，並未寄信或建立第二個 Team／資料夾。若情境資料夾已有檔案，generator **拒絕覆寫**。將新情境的 `config.json.example` 複製為**忽略版** `config.json`，只在本機填 tenantId、clientId、clientSecret。`roles` 需對應 tenant 內的現有帳號，`adminUpn`、`roles.Admin.upn`、`demoUserUpn` 必須一致。不可把設定檔或 access token 傳給其他人或提交。
+原 `ms4018-ford-auto-20260929` 已在租戶留下五本 Excel 及 Alex 寄出的第一封郵件（admin 在 Inbox 收到 CC）；回覆因跨信箱 `conversationId` 不同而失敗，**絕不可正式重跑原情境**。加法備案 `WorkshopB` 已完成正式灌入：另一個 OneDrive 資料夾有五本 Excel，五條 Outlook 郵件串已寄出，Team `20260929-MS-4018` 有五個業務頻道與訊息。完整重跑後的唯讀 preflight 顯示資料夾與五條郵件串 `Skip`、Team `Reuse`、五個頻道訊息 `Skip`，沒有待建立項目；瀏覽器亦已核對頻道貼文、郵件與五本活頁簿。若情境資料夾已有檔案，generator **拒絕覆寫**。`config.json` 與 `onedrive-receipt.json` 僅留在本機忽略版，不可把設定檔、receipt 或 access token 傳給其他人或提交。
 
 ```powershell
 Set-Location .\seed-data\scenarios\ms4018-ford-auto-workshop-b-20260929
 pwsh -File .\run.ps1 -PreflightOnly
-# 取得新情境的租戶寫入核准、確認現有帳號與新資源狀態後，才決定是否執行：
-pwsh -File .\run.ps1
 ```
 
-Ford 只 seed OneDrive（五本 Excel）、Outlook（五條 threads）與 Teams（一個 Team／五個 channel）；沒有 Calendar 或 Meeting chats。Preflight 先核對 app token 的 tenant、client、選用階段所需 roles、既有帳號與目標資料夾；OneDrive 建立時遇同名資料夾即停止，不會覆寫。第一次完整上傳後，在資料夾建立 `.ms4018-seed-proof.json`，並於本機忽略版 `onedrive-receipt.json` 記錄隨機驗證值、folder ID 和檔案修訂資訊；重跑只在兩份證明及每個檔案都相符時跳過上傳。**請保留本機 receipt**；遺失、內容變更或半途失敗時不修補舊資料夾，改用新目的名稱。錯誤即停，保存錯誤與唯讀狀態供租戶管理員研判；不能靠刪除、改名或以名稱查得的 ID 補權限。講師步驟見 [`DEMO/20260929-Ford/`](../DEMO/20260929-Ford/)。
+Ford 只 seed OneDrive（五本 Excel）、Outlook（五條 threads）與 Teams（一個 Team／五個 channel）；沒有 Calendar 或 Meeting chats。Teams 側邊欄若只顯示 General，從 Team 的「See all channels」查看其餘頻道，必要時按「Show」顯示在側邊欄。Preflight 先核對 app token 的 tenant、client、選用階段所需 roles、既有帳號與目標資料夾；OneDrive 建立時遇同名資料夾即停止，不會覆寫。第一次完整上傳後，在資料夾建立 `.ms4018-seed-proof.json`，並於本機忽略版 `onedrive-receipt.json` 記錄隨機驗證值、folder ID 和檔案修訂資訊；重跑只在兩份證明及每個檔案都相符時跳過上傳。**請保留本機 receipt**；遺失、內容變更或半途失敗時不修補舊資料夾，改用新目的名稱。已完成的 WorkshopB 不需再正式執行；驗證過的重跑會跳過郵件與頻道訊息，但 Team reuse 仍可能執行具冪等性的 migration/member POST，並非完全零寫入。錯誤即停，保存錯誤與唯讀狀態供租戶管理員研判；不能靠刪除、改名或以名稱查得的 ID 補權限。講師步驟見 [`DEMO/20260929-Ford/`](../DEMO/20260929-Ford/)。
 
 ## 換客戶：建立 Customer Pack
 
