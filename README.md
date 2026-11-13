@@ -99,8 +99,21 @@ Training key: 247579E344E92E6D
 | 03 | Microsoft 365 Copilot in PowerPoint | M03 | https://youtu.be/fzoZ_f7ji5Q |
 | 04 | Agent Mode in Word: Edit and Format a Word Document with Copilot | M04 | https://youtu.be/8oJwUiLn6IM |
 | 05 | Microsoft 365 Copilot in Teams Meetings | M05 | https://youtu.be/N1gpkk-MwpY |
-| 06 | Agent Mode in Excel: Build and Edit Spreadsheets with Copilot | M06 | https://youtu.be/nSqCy-7Qabk |
-| 07 | How to Use Copilot in Outlook: Write and Summarize Emails Using AI | M07 | https://youtu.be/FLd9djxseVI |
+| 06 | Facilitator in Teams meetings | M05 | https://youtu.be/1hZMcVupn4E |
+| 07 | Microsoft Teams - Turn meetings into actionable insights | M05 | https://youtu.be/Lvis6ejOaB4 |
+| 08 | Catch up your way with Copilot in Teams | M05 | https://youtu.be/yCEPYl8o4iA |
+| 09 | How video recap in Microsoft Copilot works | M05 | https://support.microsoft.com/en-us/microsoft-365-copilot/how-video-recap-in-microsoft-365-copilot-works |
+| 10 | Agent Mode in Excel: Build and Edit Spreadsheets with Copilot | M06 | https://youtu.be/nSqCy-7Qabk |
+| 11 | Microsoft Excel just got more powerful: Agent Mode, Copilot Function & Formula AI | M06 | https://youtu.be/f0X05b-MAwY |
+| 12 | Agent Mode is Here: Build & Edit Spreadsheets with Copilot in Excel | M06 | https://youtu.be/uDv8B_N_V1A |
+| 13 | Analyst: A reasoning agent in Microsoft 365 Copilot | M06 | https://youtu.be/9O3CoP8rEkY |
+| 14 | How to Use Copilot in Outlook: Write and Summarize Emails Using AI | M07 | https://youtu.be/FLd9djxseVI |
+| 15 | Microsoft 365 Copilot in Outlook: Prioritize my inbox | M07 | https://youtu.be/9fEgd6WDP2w |
+| 16 | How to Use Copilot in Outlook to Summarize Email Threads | M07 | https://youtu.be/sc_RJWH1Sf0 |
+| 17 | Get email coaching with Copilot | M07 | https://youtu.be/dXtX0dqrJ7w |
+| 18 | Copilot tutorial: Draft an email | M07 | https://support.microsoft.com/en-us/outlook/copilot-tutorial-draft-an-email |
+| 19 | Copilot tutorial: Get email coaching with Copilot | M07 | https://support.microsoft.com/en-us/outlook/copilot-tutorial-get-email-coaching-with-copilot |
+| 20 | Copilot tutorial: Summarize an email | M07 | https://support.microsoft.com/en-us/outlook/copilot-tutorial-summarize-an-email |
 
 ## Mind Map
 ```markmap
