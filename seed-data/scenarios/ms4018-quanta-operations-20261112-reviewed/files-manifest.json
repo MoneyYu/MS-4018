@@ -1,0 +1,21 @@
+{
+  "targetFolder": "MS4018-OperationsReview-20261112",
+  "uploadToRole": "Admin",
+  "files": [
+    {
+      "localName": "專案里程碑.xlsx"
+    },
+    {
+      "localName": "物料交期追蹤.xlsx"
+    },
+    {
+      "localName": "品質異常追蹤.xlsx"
+    },
+    {
+      "localName": "產能與良率.xlsx"
+    },
+    {
+      "localName": "客戶交付追蹤.xlsx"
+    }
+  ]
+}

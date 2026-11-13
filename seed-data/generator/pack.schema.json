@@ -25,6 +25,24 @@
       "additionalProperties": false
     },
     "tenantDomain": {"type": "string", "minLength": 3},
+    "presentation": {
+      "type": "object",
+      "required": ["teamDescription", "filesDirectory", "workbookCreator", "workbookDescription", "notesSheetName", "notesLines"],
+      "properties": {
+        "teamDescription": {"type": "string", "minLength": 1},
+        "filesDirectory": {"type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+        "workbookCreator": {"type": "string", "minLength": 1},
+        "workbookDescription": {"type": "string", "minLength": 1},
+        "notesSheetName": {"type": "string", "minLength": 1, "maxLength": 31},
+        "notesLines": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    },
     "roles": {
       "type": "object",
       "minProperties": 2,

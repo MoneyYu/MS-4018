@@ -1,0 +1,48 @@
+{
+  "tenantId": "<tenant-guid>",
+  "clientId": "<app-client-id>",
+  "clientSecret": "<local-secret>",
+  "adminUpn": "admin@moneyyu.com",
+  "demoUserUpn": "admin@moneyyu.com",
+  "teamDisplayName": "20261112-MS-4018",
+  "teamDescription": "專案里程碑、物料交期、品質、產能與交付協作",
+  "filesSourceDir": "FILES",
+  "roles": {
+    "Admin": {
+      "upn": "admin@moneyyu.com",
+      "displayName": "MOD Administrator"
+    },
+    "Sponsor": {
+      "upn": "MeganB@moneyyu.com",
+      "displayName": "Megan Bowen"
+    },
+    "PM": {
+      "upn": "AllanD@moneyyu.com",
+      "displayName": "Allan Deyoung"
+    },
+    "Procurement": {
+      "upn": "IsaiahL@moneyyu.com",
+      "displayName": "Isaiah Langer"
+    },
+    "Production": {
+      "upn": "AlexW@moneyyu.com",
+      "displayName": "Alex Wilber"
+    },
+    "Quality": {
+      "upn": "DebraB@moneyyu.com",
+      "displayName": "Debra Berger"
+    },
+    "Process": {
+      "upn": "AdeleV@moneyyu.com",
+      "displayName": "Adele Vance"
+    },
+    "Delivery": {
+      "upn": "LynneR@moneyyu.com",
+      "displayName": "Lynne Robbins"
+    },
+    "Analytics": {
+      "upn": "GradyA@moneyyu.com",
+      "displayName": "Grady Archie"
+    }
+  }
+}

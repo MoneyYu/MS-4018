@@ -1,0 +1,184 @@
+{
+  "channels": [
+    {
+      "channelName": "NPI專案協作",
+      "channelDescription": "ORION 專案里程碑與量產移轉決策",
+      "messages": [
+        {
+          "fromRole": "PM",
+          "bodyHtml": "<p>廣達電腦 ORION 專案本週進入量產移轉檢視。請各負責人於 11/11 前更新工作項目；待料、待驗證、待核准須分別追蹤，不以口頭同意代替簽核。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-11-06T09:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Process",
+              "bodyHtml": "<p>製程驗證紀錄由 Adele 整理；物料由 Isaiah 核對，品質放行由 Debra 負責。所有待結事項回到工作明細確認。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-06T09:20:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "PM",
+          "bodyHtml": "<p>截至 11/11，NPI 工作完成 21/24 項，完成率 87.5%。NPI-022 待料、NPI-023 待驗證、NPI-024 待核准；Allan 於 11/13 彙整移轉評估，不把未完成工作視為已放行。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-11-11T16:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Sponsor",
+              "bodyHtml": "<p>收到。11/13 由 Megan 檢視移轉條件；先完成三項證據，再決定量產移轉，現階段不承諾提前放行。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-11T16:20:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "物料與供應風險",
+      "channelDescription": "料況、承諾交期及替代料審核",
+      "messages": [
+        {
+          "fromRole": "Procurement",
+          "bodyHtml": "<p>MTR-A01 到貨承諾有延後風險。請生管先盤點緩衝庫存；替代料須通過工程與品質驗證，不能逕行投入。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-11-06T10:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Production",
+              "bodyHtml": "<p>Alex 將分別呈現可用庫存與在途數量；替代料方案仍為待核准，不把在途料當成已到貨。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-06T10:20:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Procurement",
+          "bodyHtml": "<p>截至 11/11，MTR-A01 按期到貨 1050/1200 件，缺口 150 件，按期到貨率 87.5%。Isaiah 於 11/13 提交補料時程；替代料仍待核准。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-11-11T14:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Sponsor",
+              "bodyHtml": "<p>先提供補料與排程兩個方案供 11/13 決策。150 件物料缺口與未交台數的單位及範圍不同，不能直接歸因。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-11T14:20:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "品質與製程",
+      "channelDescription": "批次圍堵、製程驗證及放行條件",
+      "messages": [
+        {
+          "fromRole": "Quality",
+          "bodyHtml": "<p>QN-1106 批次進入圍堵，先保留追溯紀錄，尚未確認根因。請 Adele 比對製程參數，未完成驗證前不放行。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-11-06T11:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Process",
+              "bodyHtml": "<p>已安排參數比對；先區分抽驗異常與全線首次直通良率，兩者分母不同，不混成同一指標。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-06T11:20:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Quality",
+          "bodyHtml": "<p>截至 11/11，QN-1106 抽驗異常 12/400 件，異常率 3%。批次仍隔離待判，Debra 於 11/13 確認放行條件；抽驗結果不等於全批報廢率。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-11-11T13:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Process",
+              "bodyHtml": "<p>Adele 於 11/13 前補齊驗證紀錄。現階段只確認 12 件異常，不宣稱根因已證實或批次已放行。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-11T13:20:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "產能與排程",
+      "channelDescription": "首次直通良率、區域比較及生產排程",
+      "messages": [
+        {
+          "fromRole": "Production",
+          "bodyHtml": "<p>請 Grady 依每日投入與首過台數整理兩區趨勢。若需跨區調整，先確認人力、設備及驗證條件，不以良率差異直接推論設備故障。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-11-06T14:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Analytics",
+              "bodyHtml": "<p>將以日別原表核對；首次直通良率按首過台數除以投入台數計算，與抽驗異常率分開呈現。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-06T14:20:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Production",
+          "bodyHtml": "<p>11/11 製造一區首過 962/1000 台，FPY 96.2%，低於 98.5% 目標 2.3 個百分點；二區為 987/1000 台，98.7%。Alex 於 11/13 提出排程方案，尚未核准跨區調整。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-11-11T15:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Analytics",
+              "bodyHtml": "<p>Grady 已核對原表與兩個分母。11/13 前補上設備換線及來料驗證紀錄，不能把單日差距視為已證實根因。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-11T15:20:00+08:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "channelName": "出貨與客戶交付",
+      "channelDescription": "客戶承諾、交付缺口與對外回復",
+      "messages": [
+        {
+          "fromRole": "Delivery",
+          "bodyHtml": "<p>客戶 A 要求更新 ORION 交付安排。請 Allan 先與生管核對可交數量；對外交期需 Megan 確認，不先寄出未核准承諾。</p>",
+          "mentions": [],
+          "order": 1,
+          "createdDateTime": "2026-11-06T15:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "PM",
+              "bodyHtml": "<p>先拆分已出貨、待出貨與日期變更建議；以台為單位，避免與物料件數直接相減。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-06T15:20:00+08:00"
+            }
+          ]
+        },
+        {
+          "fromRole": "Delivery",
+          "bodyHtml": "<p>截至 11/11，客戶 A 出貨 720/800 台，未交 80 台，達交率 90%。Lynne 於 11/13 提供回復稿；調整交付日仍待核准，不能直接歸因於物料缺口。</p>",
+          "mentions": [],
+          "order": 2,
+          "createdDateTime": "2026-11-11T17:00:00+08:00",
+          "replies": [
+            {
+              "fromRole": "Sponsor",
+              "bodyHtml": "<p>11/13 檢視可交數量與核准後，再由 Lynne 統一回復。草稿不代表已對客戶承諾，資料以 11/11 截止口徑為準。</p>",
+              "mentions": [],
+              "createdDateTime": "2026-11-11T17:20:00+08:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

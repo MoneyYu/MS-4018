@@ -45,6 +45,22 @@ For the actual scenarios currently in this workspace and their `-Industry` defau
 
 ### MS-4018 Customer Packs (this repository only)
 
+For business-facing assets without demonstration labels, use the optional `presentation`
+contract shown in `seed-data/packs/ms4018-quanta-operations/pack.yaml`: `teamDescription`,
+`filesDirectory`, `workbookCreator`, `workbookDescription`, `notesSheetName`, and exactly
+two `notesLines`. Changing only narrative YAML leaves default workbook metadata and
+notes behind. Validate generated JSON **and workbook XML**, not just source prose.
+Omitting `presentation` preserves legacy defaults; do not globally relabel old packs.
+Internal keys, existing shared identities and the required `.ms4018-seed-proof.json`
+are separate from business copy. Never remove the proof to make a folder look natural.
+Keep fictional-data disclosure in the trainer runbook.
+
+Before any live run, freeze the exact sender/To/Cc/subject for **every** mail, all Team
+owners/members/channels (including General and Group/Site side effects), named OneDrive
+assets and executable/data hashes. Obtain approval of that exact manifest and rehash
+before execution. A successful preflight is not write consent, and a saved manifest
+is not ownership evidence. See `docs/quanta/20261112/runbook.md`.
+
 For a Teams/Outlook/Excel course demo, use the local `seed-data/packs/<scenario>/pack.yaml`
 and `seed-data/generator/build_scenario.py` instead of copying the unrelated SharePoint-only
 MS-4022 runner. Run from the **MS-4018 repository root**:
@@ -283,6 +299,7 @@ before promising a safe rerun.
 
 | Engine copy | Status | Safe to re-run? |
 |---|---|---|
+| `MoneyYu/MS-4018` → generated `ms4018-quanta-operations-20261112-reviewed` | Five Excel workbooks, five three-message mail threads, one Team with five business channels (10 posts / 10 replies), Admin owner and nine members. Initial post-run preflight had no Creates; recipients/content and real app UI were checked. After reading-view checks one workbook's eTag/size drifted; subsequent GET found no business cell/formula/Table/chart-count/creator/description differences. | ❌ No full rerun tested. Latest preflight correctly aborts on the revision mismatch. Preserve receipt and resources; never update the proof/receipt or overwrite to hide drift. |
 | `MoneyYu/MS-4018` → `seed-data/engine` + generated `ms4018-ford-auto-20260929` | First live run: five Excel files and one Outlook mail were written; reply lookup failed across mailbox-local `conversationId`s, so Teams never ran. The original scenario is partial. | ❌ Do not rerun the original scenario or delete its evidence |
 | `MoneyYu/MS-4018` → `seed-data/engine` + generated `ms4018-ford-auto-workshop-b-20260929` | **Live-verified**: five Excel files, five Outlook threads, one Team with five business channels and posts. One intentional full rerun exited 0 with five email and five channel-message skips; subsequent read-only preflight confirmed folder `Skip`, Team `Reuse`, five complete channels with messages `Skip`, five threads `Skip`, and no creates. Teams, Outlook and OneDrive content was also checked in the browser. Offline suite: **472 passed, 0 failed**. | ✅ Verified rerun with intact local receipt and exact remote proof; Team reuse still issues idempotent migration/member POSTs, so not a zero-write run |
 | `MoneyYu/PL-7008` → `seed-data/engine` + scenario `pl7008-it-helpdesk-20260831` | **Hardened and live-verified** (2026-08-31): read-only Phase 0.5 preflight, email/team/channel/message idempotency, exact-name file skip, fail-fast phase wrapper, Graph write responses suppressed, `seed-data/tests/Test-SeedEngine.ps1` offline suite | ✅ Yes — two consecutive runs produced identical tenant state |
@@ -884,6 +901,24 @@ Default Phase 7 produces functional but **template-looking** sites. To make them
 ## PowerShell Implementation Pitfalls
 
 Bugs that cost real debugging time in this engine. All of them look correct while being wrong.
+
+For read-only Graph mail verification, enumerate recipients explicitly:
+`$mail.toRecipients | ForEach-Object { $_.emailAddress.address }` (and likewise for CC).
+Chaining `$mail.toRecipients.emailAddress.address` can resolve the array's .NET `Address(int)`
+method instead of recipient addresses, producing a false mismatch. Diagnose the observed
+values before treating a verifier failure as a seeding defect; never resend mail to repair it.
+
+For Excel browser verification, use reading view (`action=view`) and inspect calculated
+values without editing immutable source files; then re-run GET-only preflight to confirm
+their receipt revisions still match. If a Teams deep-link launcher stalls, the launcher's
+own encoded web-app destination can be navigated directly; do not infer missing channels
+or create another Team from a stalled navigation. Keep the same Admin browser identity.
+
+**Reading view does not prove an immutable revision.** One Quanta workbook changed eTag
+and size after `action=view` checks while its business cells, formulas, Table ranges and
+chart count remained identical. The causal mechanism is unproven. Treat a later receipt
+failure as a real protective stop: compare by GET only, report the drift, preserve the
+original receipt, and never re-upload or amend the receipt to make the check pass.
 
 | Pitfall | What actually happens | Do this instead |
 |---|---|---|

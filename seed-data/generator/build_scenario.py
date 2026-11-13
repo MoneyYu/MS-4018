@@ -35,6 +35,15 @@ def validate_pack(pack, date):
     with (HERE / "pack.schema.json").open(encoding="utf-8") as source:
         validate(pack, json.load(source))
     datetime.strptime(date, "%Y%m%d")
+    presentation = pack.get("presentation")
+    if presentation:
+        directory = presentation["filesDirectory"]
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", directory) or re.fullmatch(
+            r"CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9]", directory, re.IGNORECASE
+        ):
+            raise ValueError(f"Invalid presentation filesDirectory: {directory}")
+        if re.search(r"[\[\]\\/*?:]", presentation["notesSheetName"]):
+            raise ValueError(f"Invalid Excel sheet name: {presentation['notesSheetName']}")
     if pack["customer"]["name"].casefold() in pack["course"]["purpose"].casefold():
         raise ValueError("Customer brand must not appear in persistent resource names")
     upns = []
@@ -90,6 +99,8 @@ def validate_pack(pack, date):
             raise ValueError("Workbook filename must be a basename ending in .xlsx")
         table_names = set()
         for sheet in book["sheets"]:
+            if presentation and sheet["name"].casefold() == presentation["notesSheetName"].casefold():
+                raise ValueError(f"Notes sheet name conflicts with business sheet name: {sheet['name']}")
             table_name = sheet["table"]
             if not re.fullmatch(r"[A-Za-z_][A-Za-z_0-9]*", table_name) or table_name in table_names:
                 raise ValueError(f"Invalid or duplicate Excel table name: {table_name}")
@@ -159,12 +170,15 @@ def rows_for_sheet(sheet):
     return rows
 
 
-def make_workbook(book):
+def make_workbook(book, presentation=None):
+    presentation = presentation or {}
     wb = Workbook()
-    wb.properties.creator = "MS-4018 demo"
+    wb.properties.creator = presentation.get("workbookCreator", "MS-4018 demo")
     wb.properties.created = datetime(2020, 1, 1)
     wb.properties.modified = datetime(2020, 1, 1)
-    wb.properties.description = "Fictional training data, not customer-reported results."
+    wb.properties.description = presentation.get(
+        "workbookDescription", "Fictional training data, not customer-reported results."
+    )
     for index, sheet in enumerate(book["sheets"]):
         ws = wb.active if index == 0 else wb.create_sheet()
         ws.title = sheet["name"]
@@ -197,9 +211,14 @@ def make_workbook(book):
             chart.add_data(Reference(ws, min_col=value, min_row=1, max_row=ws.max_row), titles_from_data=True)
             chart.set_categories(Reference(ws, min_col=category, min_row=2, max_row=ws.max_row))
             ws.add_chart(chart, f"A{ws.max_row + 3}")
-    notes = wb.create_sheet("演示说明")
-    notes["A1"] = "模拟教学数据，非客户官方业绩或已确认的召回信息。"
-    notes["A2"] = "来源：本地 Customer Pack；所有结论请根据数据表重新核对。"
+    notes = wb.create_sheet(presentation.get("notesSheetName", "演示说明"))
+    notes["A1"], notes["A2"] = presentation.get(
+        "notesLines",
+        [
+            "模拟教学数据，非客户官方业绩或已确认的召回信息。",
+            "来源：本地 Customer Pack；所有结论请根据数据表重新核对。",
+        ],
+    )
     notes.column_dimensions["A"].width = 75
     notes["A1"].font = Font(name="Arial", bold=True, color="9C2F22")
     notes["A2"].font = Font(name="Arial")
@@ -300,6 +319,8 @@ def build_scenario(pack_path, date, output):
     if output.exists() and any(output.iterdir()):
         raise FileExistsError(f"Scenario already exists; never overwrite seeded assets: {output}")
     output.mkdir(parents=True, exist_ok=True)
+    presentation = pack.get("presentation", {})
+    files_directory = presentation.get("filesDirectory", "DEMO-FILE")
     config = {
         "tenantId": "<tenant-guid>",
         "clientId": "<app-client-id>",
@@ -307,8 +328,12 @@ def build_scenario(pack_path, date, output):
         "adminUpn": pack["roles"]["Admin"]["upn"],
         "demoUserUpn": pack["roles"]["Admin"]["upn"],
         "teamDisplayName": f'{date}-{pack["course"]["code"]}',
-        "teamDescription": f'{pack["course"]["code"]} dated training demo',
-        "filesSourceDir": pack.get("sourceArchive", {}).get("dir", "DEMO-FILE"),
+        "teamDescription": presentation.get(
+            "teamDescription", f'{pack["course"]["code"]} dated training demo'
+        ),
+        "filesSourceDir": presentation.get(
+            "filesDirectory", pack.get("sourceArchive", {}).get("dir", "DEMO-FILE")
+        ),
         "roles": pack["roles"],
     }
     write_json(output / "config.json.example", config)
@@ -321,10 +346,10 @@ def build_scenario(pack_path, date, output):
                 email["order"] = order
         write_json(output / "emails.json", emails)
     if "workbooks" in pack:
-        folder = output / "DEMO-FILE"
+        folder = output / files_directory
         folder.mkdir(exist_ok=True)
         for book in pack["workbooks"]:
-            (folder / book["filename"]).write_bytes(make_workbook(book))
+            (folder / book["filename"]).write_bytes(make_workbook(book, presentation))
         write_json(
             output / "files-manifest.json",
             {
@@ -337,14 +362,32 @@ def build_scenario(pack_path, date, output):
         sites = json.loads(json.dumps(pack["sharepoint"]).replace("{{DATE}}", date))
         write_json(output / "sharepoint-sites.json", sites)
     (output / "run.ps1").write_text(runner(pack), encoding="utf-8")
+    instructions = (
+        "Copy `config.json.example` to locally ignored `config.json`, provide app credentials, "
+        "then run `pwsh -File .\\run.ps1 -PreflightOnly` before `pwsh -File .\\run.ps1`. "
+        "Stop on any ambiguity; never delete, rename, or repair tenant resources by name. "
+        "Outlook messages display execution date (not historical time).\n"
+    )
+    if presentation:
+        instructions = (
+            "Status: offline; live writes are not authorized.\n\n"
+            "Prepare an approval manifest covering executable code, data files, recipients, and targets, "
+            "including fingerprints of all covered executable/data files. Obtain explicit approval of the exact fingerprint "
+            "of that manifest before any live write; approval applies only to the approved manifest.\n\n"
+            "Immediately before any live write, rehash the approval manifest and compare it with the approved fingerprint. "
+            "Rehash every covered executable/data file and compare executable code, data files, recipients, and targets "
+            "with the approved manifest. Run a fresh GET-only preflight using `pwsh -File .\\run.ps1 -PreflightOnly`; "
+            "a successful preflight does not authorize writes. Stop on any mismatch, failed or ambiguous preflight, "
+            "or missing exact-fingerprint approval. Do not change approved inputs between verification and execution.\n\n"
+            "The runner does not enforce approval. Only after every gate passes may `pwsh -File .\\run.ps1` be invoked. "
+            "Never delete, rename, or repair tenant resources by name. "
+            "Outlook messages display execution date (not historical time).\n"
+        )
     (output / "README.md").write_text(
         f'# {pack["course"]["code"]} {pack["slug"]} ({date})\n\n'
         "Fictional demonstration content; customer names are narrative only. "
         "Only existing, enabled tenant accounts may be used. This seeder never creates users.\n\n"
-        "Copy `config.json.example` to locally ignored `config.json`, provide app credentials, "
-        "then run `pwsh -File .\\run.ps1 -PreflightOnly` before `pwsh -File .\\run.ps1`. "
-        "Stop on any ambiguity; never delete, rename, or repair tenant resources by name. "
-        "Outlook messages display execution date (not historical time).\n",
+        + instructions,
         encoding="utf-8",
     )
     return output

@@ -1,0 +1,243 @@
+slug: ms4018-quanta-operations
+customer: {name: 廣達電腦, industry: 電子製造, locale: zh-TW}
+course: {code: MS-4018, purpose: OperationsReview}
+tenantDomain: moneyyu.com
+presentation:
+  teamDescription: 專案里程碑、物料交期、品質、產能與交付協作
+  filesDirectory: FILES
+  workbookCreator: 營運管理
+  workbookDescription: ORION 專案營運追蹤與跨部門行動依據
+  notesSheetName: 資料口徑
+  notesLines:
+    - 資料截止：2026-11-11；日期以台北時間為準；數量單位依各表欄名。
+    - 待核准方案不代表已執行；品質抽驗、首次直通良率與交付指標分開計算。
+roles:
+  Admin: {upn: admin@moneyyu.com, displayName: MOD Administrator}
+  Sponsor: {upn: MeganB@moneyyu.com, displayName: Megan Bowen}
+  PM: {upn: AllanD@moneyyu.com, displayName: Allan Deyoung}
+  Procurement: {upn: IsaiahL@moneyyu.com, displayName: Isaiah Langer}
+  Production: {upn: AlexW@moneyyu.com, displayName: Alex Wilber}
+  Quality: {upn: DebraB@moneyyu.com, displayName: Debra Berger}
+  Process: {upn: AdeleV@moneyyu.com, displayName: Adele Vance}
+  Delivery: {upn: LynneR@moneyyu.com, displayName: Lynne Robbins}
+  Analytics: {upn: GradyA@moneyyu.com, displayName: Grady Archie}
+teams:
+  channels:
+    - channelName: NPI專案協作
+      channelDescription: ORION 專案里程碑與量產移轉決策
+      messages:
+        - fromRole: PM
+          dayOffset: -6
+          time: "09:00"
+          bodyHtml: '<p>廣達電腦 ORION 專案本週進入量產移轉檢視。請各負責人於 11/11 前更新工作項目；待料、待驗證、待核准須分別追蹤，不以口頭同意代替簽核。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Process, dayOffset: -6, time: "09:20", bodyHtml: '<p>製程驗證紀錄由 Adele 整理；物料由 Isaiah 核對，品質放行由 Debra 負責。所有待結事項回到工作明細確認。</p>', mentions: []}
+        - fromRole: PM
+          dayOffset: -1
+          time: "16:00"
+          bodyHtml: '<p>截至 11/11，NPI 工作完成 21/24 項，完成率 87.5%。NPI-022 待料、NPI-023 待驗證、NPI-024 待核准；Allan 於 11/13 彙整移轉評估，不把未完成工作視為已放行。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Sponsor, dayOffset: -1, time: "16:20", bodyHtml: '<p>收到。11/13 由 Megan 檢視移轉條件；先完成三項證據，再決定量產移轉，現階段不承諾提前放行。</p>', mentions: []}
+    - channelName: 物料與供應風險
+      channelDescription: 料況、承諾交期及替代料審核
+      messages:
+        - fromRole: Procurement
+          dayOffset: -6
+          time: "10:00"
+          bodyHtml: '<p>MTR-A01 到貨承諾有延後風險。請生管先盤點緩衝庫存；替代料須通過工程與品質驗證，不能逕行投入。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Production, dayOffset: -6, time: "10:20", bodyHtml: '<p>Alex 將分別呈現可用庫存與在途數量；替代料方案仍為待核准，不把在途料當成已到貨。</p>', mentions: []}
+        - fromRole: Procurement
+          dayOffset: -1
+          time: "14:00"
+          bodyHtml: '<p>截至 11/11，MTR-A01 按期到貨 1050/1200 件，缺口 150 件，按期到貨率 87.5%。Isaiah 於 11/13 提交補料時程；替代料仍待核准。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Sponsor, dayOffset: -1, time: "14:20", bodyHtml: '<p>先提供補料與排程兩個方案供 11/13 決策。150 件物料缺口與未交台數的單位及範圍不同，不能直接歸因。</p>', mentions: []}
+    - channelName: 品質與製程
+      channelDescription: 批次圍堵、製程驗證及放行條件
+      messages:
+        - fromRole: Quality
+          dayOffset: -6
+          time: "11:00"
+          bodyHtml: '<p>QN-1106 批次進入圍堵，先保留追溯紀錄，尚未確認根因。請 Adele 比對製程參數，未完成驗證前不放行。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Process, dayOffset: -6, time: "11:20", bodyHtml: '<p>已安排參數比對；先區分抽驗異常與全線首次直通良率，兩者分母不同，不混成同一指標。</p>', mentions: []}
+        - fromRole: Quality
+          dayOffset: -1
+          time: "13:00"
+          bodyHtml: '<p>截至 11/11，QN-1106 抽驗異常 12/400 件，異常率 3%。批次仍隔離待判，Debra 於 11/13 確認放行條件；抽驗結果不等於全批報廢率。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Process, dayOffset: -1, time: "13:20", bodyHtml: '<p>Adele 於 11/13 前補齊驗證紀錄。現階段只確認 12 件異常，不宣稱根因已證實或批次已放行。</p>', mentions: []}
+    - channelName: 產能與排程
+      channelDescription: 首次直通良率、區域比較及生產排程
+      messages:
+        - fromRole: Production
+          dayOffset: -6
+          time: "14:00"
+          bodyHtml: '<p>請 Grady 依每日投入與首過台數整理兩區趨勢。若需跨區調整，先確認人力、設備及驗證條件，不以良率差異直接推論設備故障。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Analytics, dayOffset: -6, time: "14:20", bodyHtml: '<p>將以日別原表核對；首次直通良率按首過台數除以投入台數計算，與抽驗異常率分開呈現。</p>', mentions: []}
+        - fromRole: Production
+          dayOffset: -1
+          time: "15:00"
+          bodyHtml: '<p>11/11 製造一區首過 962/1000 台，FPY 96.2%，低於 98.5% 目標 2.3 個百分點；二區為 987/1000 台，98.7%。Alex 於 11/13 提出排程方案，尚未核准跨區調整。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Analytics, dayOffset: -1, time: "15:20", bodyHtml: '<p>Grady 已核對原表與兩個分母。11/13 前補上設備換線及來料驗證紀錄，不能把單日差距視為已證實根因。</p>', mentions: []}
+    - channelName: 出貨與客戶交付
+      channelDescription: 客戶承諾、交付缺口與對外回復
+      messages:
+        - fromRole: Delivery
+          dayOffset: -6
+          time: "15:00"
+          bodyHtml: '<p>客戶 A 要求更新 ORION 交付安排。請 Allan 先與生管核對可交數量；對外交期需 Megan 確認，不先寄出未核准承諾。</p>'
+          mentions: []
+          replies:
+            - {fromRole: PM, dayOffset: -6, time: "15:20", bodyHtml: '<p>先拆分已出貨、待出貨與日期變更建議；以台為單位，避免與物料件數直接相減。</p>', mentions: []}
+        - fromRole: Delivery
+          dayOffset: -1
+          time: "17:00"
+          bodyHtml: '<p>截至 11/11，客戶 A 出貨 720/800 台，未交 80 台，達交率 90%。Lynne 於 11/13 提供回復稿；調整交付日仍待核准，不能直接歸因於物料缺口。</p>'
+          mentions: []
+          replies:
+            - {fromRole: Sponsor, dayOffset: -1, time: "17:20", bodyHtml: '<p>11/13 檢視可交數量與核准後，再由 Lynne 統一回復。草稿不代表已對客戶承諾，資料以 11/11 截止口徑為準。</p>', mentions: []}
+emails:
+  emailThreads:
+    - threadName: NPI量產移轉
+      emails:
+        - {action: send, fromRole: PM, toRoles: [Process, Sponsor], ccRoles: [Admin], subject: '【20261112 營運週會】ORION 專案 NPI 節點與量產移轉', bodyHtml: '<p>各位好，廣達電腦 ORION 專案截至 11/11 完成 21/24 項 NPI 工作，完成率 87.5%。剩餘 NPI-022 待料、023 待驗證、024 待核准。請 Adele 補齊驗證紀錄，Allan 於 11/13 彙整移轉評估。</p>'}
+        - {action: reply, fromRole: Process, toRoles: [PM, Sponsor], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】ORION 專案 NPI 節點與量產移轉', bodyHtml: '<p>我會在 11/13 前補齊 NPI-023 紀錄。完成 21 項不代表其餘三項已放行，原始依據是專案里程碑.xlsx 的工作明細。</p>'}
+        - {action: reply, fromRole: Sponsor, toRoles: [PM, Process], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】ORION 專案 NPI 節點與量產移轉', bodyHtml: '<p>11/13 檢視證據後再決定量產移轉。請區分已完成、待驗證與待核准，現階段不對外承諾提前放行。</p>'}
+    - threadName: 物料到貨與替代料
+      emails:
+        - {action: send, fromRole: Procurement, toRoles: [Production, Sponsor], ccRoles: [Admin], subject: '【20261112 營運週會】MTR-A01 交期缺口與替代料評估', bodyHtml: '<p>截至 11/11，MTR-A01 按期到貨 1050/1200 件，缺口 150 件，按期率 87.5%。Isaiah 於 11/13 提交補料時程，請 Alex 提供可用庫存；替代料尚未核准。</p>'}
+        - {action: reply, fromRole: Production, toRoles: [Procurement, Sponsor], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】MTR-A01 交期缺口與替代料評估', bodyHtml: '<p>我會在 11/13 提供排程方案。物料件數與成品台數不同，150 件缺口不能直接歸因為 80 台未交，不將在途數量當成已到貨。</p>'}
+        - {action: reply, fromRole: Sponsor, toRoles: [Procurement, Production], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】MTR-A01 交期缺口與替代料評估', bodyHtml: '<p>請附工程及品質驗證條件，11/13 再核定替代料或排程調整。待核准方案不可視為已投入生產。</p>'}
+    - threadName: 品質放行條件
+      emails:
+        - {action: send, fromRole: Quality, toRoles: [Process], ccRoles: [Admin], subject: '【20261112 營運週會】QN-1106 批次異常與放行條件', bodyHtml: '<p>截至 11/11，QN-1106 抽驗異常 12/400 件，異常率 3%。批次隔離待判，尚未確認根因。請 Adele 於 11/13 前比對製程紀錄，不把抽驗結果外推為全批報廢率。</p>'}
+        - {action: reply, fromRole: Process, toRoles: [Quality], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】QN-1106 批次異常與放行條件', bodyHtml: '<p>會於 11/13 補齊驗證紀錄。品質異常追蹤.xlsx 的批次抽驗與產能表的首次直通良率分母不同，不能相加或混用。</p>'}
+        - {action: reply, fromRole: Quality, toRoles: [Process], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】QN-1106 批次異常與放行條件', bodyHtml: '<p>收到。Debra 於 11/13 檢視證據與放行條件；在核准前維持隔離，不能寫成根因已確認或批次已放行。</p>'}
+    - threadName: 產能良率與排程
+      emails:
+        - {action: send, fromRole: Production, toRoles: [Analytics, Sponsor], ccRoles: [Admin], subject: '【20261112 營運週會】製造一區良率差距與排程調整', bodyHtml: '<p>11/11 製造一區首過 962/1000 台，FPY 96.2%，低於 98.5% 目標 2.3 個百分點。二區為 987/1000 台，98.7%。請 Grady 核對原表；Alex 於 11/13 提交排程方案。</p>'}
+        - {action: reply, fromRole: Analytics, toRoles: [Production, Sponsor], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】製造一區良率差距與排程調整', bodyHtml: '<p>已核對日別產能表的投入與首過台數。差距是百分點，不是相對下降百分比；原因需另查換線與驗證紀錄，不能推論已證實設備故障。</p>'}
+        - {action: reply, fromRole: Sponsor, toRoles: [Production, Analytics], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】製造一區良率差距與排程調整', bodyHtml: '<p>11/13 評估跨區調整條件。尚未核准的排程不要寫成已執行；請保留單日與多日數據的範圍差異。</p>'}
+    - threadName: 客戶交付安排
+      emails:
+        - {action: send, fromRole: Delivery, toRoles: [PM, Sponsor], ccRoles: [Admin], subject: '【20261112 營運週會】客戶 A 交付缺口與回復安排', bodyHtml: '<p>截至 11/11，ORION 客戶 A 出貨 720/800 台，未交 80 台，達交率 90%。Lynne 於 11/13 提供回復稿，請 Allan 核對可交數量；調整交付日尚未核准。</p>'}
+        - {action: reply, fromRole: PM, toRoles: [Delivery, Sponsor], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】客戶 A 交付缺口與回復安排', bodyHtml: '<p>將交叉核對物料、品質及排程。80 台未交不能直接歸因於 150 件物料缺口；根因與交期方案都需要進一步證據。</p>'}
+        - {action: reply, fromRole: Sponsor, toRoles: [Delivery, PM], ccRoles: [Admin], subject: 'Re: 【20261112 營運週會】客戶 A 交付缺口與回復安排', bodyHtml: '<p>11/13 審視方案後再回復客戶。核准前不要送出新的交付承諾，資料截止維持 11/11。</p>'}
+workbooks:
+  - filename: 專案里程碑.xlsx
+    sheets:
+      - name: 工作明細
+        table: NpiMilestones
+        headers: [工作項目, 專案, 里程碑, 負責角色, 計畫完成日, 實際完成日, 狀態, 後續截止日]
+        rows:
+          - [NPI-001, ORION, 需求基線, PM, "2026-11-02", "2026-11-02", 已完成, null]
+          - [NPI-002, ORION, 規格審核, PM, "2026-11-02", "2026-11-02", 已完成, null]
+          - [NPI-003, ORION, 料號清單, Procurement, "2026-11-02", "2026-11-02", 已完成, null]
+          - [NPI-004, ORION, 供應商交期, Procurement, "2026-11-03", "2026-11-03", 已完成, null]
+          - [NPI-005, ORION, 治具點檢, Process, "2026-11-03", "2026-11-03", 已完成, null]
+          - [NPI-006, ORION, 作業指引, Process, "2026-11-03", "2026-11-03", 已完成, null]
+          - [NPI-007, ORION, 追溯編碼, Quality, "2026-11-04", "2026-11-04", 已完成, null]
+          - [NPI-008, ORION, 抽驗口徑, Quality, "2026-11-04", "2026-11-04", 已完成, null]
+          - [NPI-009, ORION, 產能盤點, Production, "2026-11-04", "2026-11-04", 已完成, null]
+          - [NPI-010, ORION, 人力安排, Production, "2026-11-05", "2026-11-05", 已完成, null]
+          - [NPI-011, ORION, 包裝規格, Delivery, "2026-11-05", "2026-11-05", 已完成, null]
+          - [NPI-012, ORION, 運輸條件, Delivery, "2026-11-05", "2026-11-05", 已完成, null]
+          - [NPI-013, ORION, 數據欄位, Analytics, "2026-11-06", "2026-11-06", 已完成, null]
+          - [NPI-014, ORION, 良率口徑, Analytics, "2026-11-06", "2026-11-06", 已完成, null]
+          - [NPI-015, ORION, 風險彙整, PM, "2026-11-06", "2026-11-06", 已完成, null]
+          - [NPI-016, ORION, 緩衝庫存盤點, Procurement, "2026-11-09", "2026-11-09", 已完成, null]
+          - [NPI-017, ORION, 線體平衡, Process, "2026-11-09", "2026-11-09", 已完成, null]
+          - [NPI-018, ORION, 圍堵紀錄, Quality, "2026-11-09", "2026-11-09", 已完成, null]
+          - [NPI-019, ORION, 首過數核對, Analytics, "2026-11-10", "2026-11-10", 已完成, null]
+          - [NPI-020, ORION, 出貨數核對, Delivery, "2026-11-10", "2026-11-10", 已完成, null]
+          - [NPI-021, ORION, 移轉議程, PM, "2026-11-11", "2026-11-11", 已完成, null]
+          - [NPI-022, ORION, MTR-A01 補料, Procurement, "2026-11-11", null, 待料, "2026-11-13"]
+          - [NPI-023, ORION, 製程驗證補件, Process, "2026-11-11", null, 待驗證, "2026-11-13"]
+          - [NPI-024, ORION, 移轉核定, Sponsor, "2026-11-11", null, 待核准, "2026-11-13"]
+      - name: 里程碑摘要
+        table: NpiSummary
+        headers: [專案, 工作總數, 已完成數, 完成率(%)]
+        rows: [[ORION, null, null, null]]
+        formulas:
+          工作總數: '=COUNTA(NpiMilestones[工作項目])'
+          已完成數: '=COUNTIF(NpiMilestones[狀態],"已完成")'
+          完成率(%): '=IF(B{row}=0,NA(),C{row}/B{row}*100)'
+        chart: {category: 專案, value: 已完成數}
+  - filename: 物料交期追蹤.xlsx
+    sheets:
+      - name: 物料交期
+        table: MaterialDelivery
+        headers: [週別, 物料代碼, 計畫到貨件數, 按期到貨件數, 缺口件數, 按期到貨率(%), 負責角色, 處置狀態]
+        rows:
+          - ["2026-W46", MTR-A01, 1200, 1050, null, null, Procurement, 替代料待核准]
+          - ["2026-W46", MTR-A02, 800, 800, null, null, Procurement, 已到齊]
+          - ["2026-W46", MTR-A03, 600, 570, null, null, Procurement, 待補料]
+          - ["2026-W46", MTR-A04, 400, 400, null, null, Procurement, 已到齊]
+        formulas:
+          缺口件數: '=C{row}-D{row}'
+          按期到貨率(%): '=IF(C{row}=0,NA(),D{row}/C{row}*100)'
+        chart: {category: 物料代碼, value: 缺口件數}
+  - filename: 品質異常追蹤.xlsx
+    sheets:
+      - name: 批次品質
+        table: QualityLots
+        headers: [批次, 物料代碼, 抽驗件數, 異常件數, 異常率(%), 處置狀態, 負責角色]
+        rows:
+          - [QN-1106, MTR-A01, 400, 12, null, 隔離待判, Quality]
+          - [QN-1107, MTR-A02, 300, 3, null, 驗證中, Quality]
+          - [QN-1109, MTR-A03, 200, 1, null, 已確認放行條件, Quality]
+          - [QN-1110, MTR-A04, 200, 0, null, 已放行, Quality]
+        formulas: {異常率(%): '=IF(C{row}=0,NA(),D{row}/C{row}*100)'}
+        chart: {category: 批次, value: 異常件數}
+  - filename: 產能與良率.xlsx
+    sheets:
+      - name: 日別產能
+        table: ProductionYield
+        headers: [日期, 製造區, 投入台數, 首過台數, 首次直通良率(%), 目標良率(%), 良率差距百分點]
+        rows:
+          - ["2026-11-02", 製造一區, 1000, 987, null, 98.5, null]
+          - ["2026-11-02", 製造二區, 1000, 988, null, 98.5, null]
+          - ["2026-11-03", 製造一區, 1000, 986, null, 98.5, null]
+          - ["2026-11-03", 製造二區, 1000, 990, null, 98.5, null]
+          - ["2026-11-04", 製造一區, 1000, 982, null, 98.5, null]
+          - ["2026-11-04", 製造二區, 1000, 987, null, 98.5, null]
+          - ["2026-11-05", 製造一區, 1000, 980, null, 98.5, null]
+          - ["2026-11-05", 製造二區, 1000, 986, null, 98.5, null]
+          - ["2026-11-06", 製造一區, 1000, 977, null, 98.5, null]
+          - ["2026-11-06", 製造二區, 1000, 988, null, 98.5, null]
+          - ["2026-11-09", 製造一區, 1000, 974, null, 98.5, null]
+          - ["2026-11-09", 製造二區, 1000, 989, null, 98.5, null]
+          - ["2026-11-10", 製造一區, 1000, 969, null, 98.5, null]
+          - ["2026-11-10", 製造二區, 1000, 988, null, 98.5, null]
+          - ["2026-11-11", 製造一區, 1000, 962, null, 98.5, null]
+          - ["2026-11-11", 製造二區, 1000, 987, null, 98.5, null]
+        formulas:
+          首次直通良率(%): '=IF(C{row}=0,NA(),D{row}/C{row}*100)'
+          良率差距百分點: '=E{row}-F{row}'
+        chart: {category: 日期, value: 首次直通良率(%)}
+  - filename: 客戶交付追蹤.xlsx
+    sheets:
+      - name: 交付明細
+        table: ShipmentCommitments
+        headers: [客戶代號, 專案, 承諾出貨台數, 實際出貨台數, 未交台數, 達交率(%), 承諾日期, 狀態, 負責角色]
+        rows:
+          - [客戶 A, ORION, 800, 720, null, null, "2026-11-11", 調整交期待核准, Delivery]
+          - [客戶 B, ORION, 500, 500, null, null, "2026-11-11", 已完成, Delivery]
+          - [客戶 C, ORION, 400, 380, null, null, "2026-11-11", 待出貨, Delivery]
+          - [客戶 D, ORION, 300, 300, null, null, "2026-11-11", 已完成, Delivery]
+        formulas:
+          未交台數: '=C{row}-D{row}'
+          達交率(%): '=IF(C{row}=0,NA(),D{row}/C{row}*100)'
+        chart: {category: 客戶代號, value: 未交台數}

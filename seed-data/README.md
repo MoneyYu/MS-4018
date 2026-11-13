@@ -22,6 +22,23 @@ Ford 只 seed OneDrive（五本 Excel）、Outlook（五條 threads）與 Teams�
 
 ## 換客戶：建立 Customer Pack
 
+### 廣達電腦（2026-11-12）
+
+新 pack：`packs/ms4018-quanta-operations/pack.yaml`。繁體中文 ORION 專案串起 NPI、物料、品質、產能及交付；五本活頁簿、五串郵件、五個業務頻道的數據口徑一致。講師步驟與實際寫入核准邊界見 [操作指南](../docs/quanta/20261112/runbook.md)。
+
+**本場已完成正式灌入與網站內容核對，勿重跑。** Team 為 `20261112-MS-4018`，Admin OneDrive 資料夾為 `MS4018-OperationsReview-20261112`，Outlook 搜尋 `20261112 營運週會`。開啟 Excel 前唯讀 preflight 無 Create；網站核對後 `產能與良率.xlsx` 的 eTag／大小改變，最後 preflight 保護性停止。再次 GET 核對沒有業務儲存格或公式差異；不更新 receipt、不覆寫來修補。詳見講師指南及 issue #5；保留本機 ignored config／receipt。
+
+此 pack 使用選用的 `presentation` 設定，以自然業務用語取代產生器預設的教材標記；設定 Team 描述、`FILES` 本機來源目錄、Excel 作者／描述與「資料口徑」頁。未指定時 Ford／MS-4022 預設不變。此例外不修改共享使用者身份，也不刪除必要的 OneDrive `.ms4018-seed-proof.json`。
+
+從專案根目錄，僅在新目的地不存在時生成：
+
+```powershell
+$env:UV_INDEX_URL = 'https://packagefeedproxy.microsoft.io/pypi/simple/'
+uv run --no-project .\seed-data\generator\build_scenario.py --pack .\seed-data\packs\ms4018-quanta-operations\pack.yaml --date 20261112 --output .\seed-data\scenarios\ms4018-quanta-operations-20261112-reviewed
+```
+
+正式執行前須核准精確的 15 封寄件／收件清單及完整資源副作用的 fingerprint，執行前重新計算並與已核准值比對，任何變更即停；不以 preflight 成功代替同意。使用修正操作說明的 `-reviewed` 本機目錄；較早未執行的廣達初版保留不覆寫，不作正式入口。完成前先唯讀核對並由主 agent 親自驗收真實網站；不得重跑已完成的 Ford 情境。
+
 複製 [`packs/ms4018-ford-auto/pack.yaml`](packs/ms4018-ford-auto/pack.yaml) 的**欄位結構**到新檔，改寫 `customer`、`roles`、Teams／Outlook 故事與 `workbooks` 表格數據；Team 名稱固定為 `<YYYYMMDD>-<course.code>`（本次 `20260929-MS-4018`），OneDrive 資料夾仍由 `course.code`、中立 `course.purpose`、日期組成，郵件首封主旨仍必須唯一。完整資料形狀見 [`generator/pack.schema.json`](generator/pack.schema.json)。同一課程同一天的另一情境**不能靠改 purpose 取得不同 Team 名稱**；preflight 發現碰撞就停止，不自行加尾碼、刪除或改名，須另選場次日期。`workbooks` 可用顯式 `rows`，或 `generate` 的 `seed`、`dimensions`、`periods`、`min`、`max`、`overrides` 生成可重現的資料，再用 `formulas` 插入公式欄，`chart` 增加圖表。每本 workbook 用 Excel Table 命名，方便 Copilot in Excel 指定範圍。
 
 Generator 依 pack 宣告輸出與執行必要 phase：Ford 為 0→0.5→2→3→4；MS-4022 為 0→0.5→7。不指定的 surface 不建立；每個 role 必有 UPN 且 preflight 查 `accountEnabled`；禁止建立帳號／將客戶名稱寫進持久身份。任一唯讀查詢失敗或資源不明確時停止，不會將錯誤解讀為「不存在」。
